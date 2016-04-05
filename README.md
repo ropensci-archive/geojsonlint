@@ -1,41 +1,7 @@
 geojsonlint
 ===========
 
-```{r echo=FALSE}
-library("knitr")
-hook_output <- knitr::knit_hooks$get("output")
-knitr::knit_hooks$set(output = function(x, options) {
-   lines <- options$output.lines
-   if (is.null(lines)) {
-     return(hook_output(x, options))  # pass to default hook
-   }
-   x <- unlist(strsplit(x, "\n"))
-   more <- "..."
-   if (length(lines)==1) {        # first n lines
-     if (length(x) > lines) {
-       # truncate the output, but add ....
-       x <- c(head(x, lines), more)
-     }
-   } else {
-     x <- c(if (abs(lines[1])>1) more else NULL,
-            x[lines],
-            if (length(x)>lines[abs(length(lines))]) more else NULL
-           )
-   }
-   # paste these lines together
-   x <- paste(c(x, ""), collapse = "\n")
-   hook_output(x, options)
- })
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE,
-  message = FALSE,
-  fig.width = 10,
-  fig.path = "inst/img/"
-)
-```
 
 [![Build Status](https://api.travis-ci.org/ropenscilabs/geojsonlint.png)](https://travis-ci.org/ropenscilabs/geojsonlint)
 [![codecov.io](https://codecov.io/github/ropenscilabs/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/geojsonlint?branch=master)
@@ -47,12 +13,14 @@ __lint GeoJSON__
 
 ## Installation
 
-```{r eval=FALSE}
+
+```r
 install.packages("devtools")
 devtools::install_github("ropenscilabs/geojsonlint")
 ```
 
-```{r}
+
+```r
 library("geojsonlint")
 ```
 
@@ -60,35 +28,63 @@ library("geojsonlint")
 
 Bad GeoJSON
 
-```{r}
+
+```r
 geojson_lint(x = '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}')
+#> $message
+#> [1] "\"Rhombus\" is not a valid GeoJSON type."
+#> 
+#> $status
+#> [1] "error"
 ```
 
 Good GeoJSON
 
-```{r}
+
+```r
 geojson_lint(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> $status
+#> [1] "ok"
 ```
 
 ## geojsonhint JS module
 
 Bad GeoJSON
 
-```{r}
+
+```r
 geojson_hint('{"type": "FooBar"}')
+#> $message
+#> [1] "The type FooBar is unknown"
+#> 
+#> $line
+#> [1] 1
 ```
 
-```{r}
+
+```r
 geojson_hint('{ "type": "FeatureCollection" }')
+#> $message
+#> [1] "\"features\" property required"
+#> 
+#> $line
+#> [1] 1
 ```
 
-```{r}
+
+```r
 geojson_hint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}')
+#> $message
+#> [1] "\"coordinates\" property required"
+#> 
+#> $line
+#> [1] 1
 ```
 
 Good GeoJSON
 
-```{r}
+
+```r
 geojson_hint('{
   "type": "FeatureCollection",
   "features": [
@@ -105,6 +101,7 @@ geojson_hint('{
     }
   ]
 }')
+#> [1] "valid"
 ```
 
 ## Meta

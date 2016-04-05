@@ -1,4 +1,4 @@
-#' Validate GeoJSON using geojson_lint.com
+#' Validate GeoJSON using geojsonlint.com
 #'
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former

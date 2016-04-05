@@ -2,7 +2,7 @@
 % Please edit documentation in R/geojsonlint.R
 \name{geojson_lint}
 \alias{geojson_lint}
-\title{Validate GeoJSON using geojson_lint.com}
+\title{Validate GeoJSON using geojsonlint.com}
 \usage{
 geojson_lint(x, ...)
 }
@@ -14,7 +14,7 @@ url pointing to one of the former}
 \code{\link[httr]{POST}}}
 }
 \description{
-Validate GeoJSON using geojson_lint.com
+Validate GeoJSON using geojsonlint.com
 }
 \details{
 Uses the web service at \url{http://geojsonlint.com}

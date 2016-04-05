@@ -15,7 +15,7 @@ test_that("geojson_hint works with character inputs", {
 })
 
 test_that("geojson_hint works with file inputs", {
-  file <- system.file("examples", "zillow_or.geojson", package = "geojsonio")
+  file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
   d <- geojson_hint(as.location(file))
   expect_is(as.location(file), "location")
   expect_is(d, "character")

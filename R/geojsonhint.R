@@ -13,7 +13,7 @@
 #' geojson_hint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}')
 #'
 #' # A file
-#' file <- system.file("examples", "zillow_or.geojson", package = "geojsonio")
+#' file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
 #' geojson_hint(as.location(file))
 #'
 #' # A URL

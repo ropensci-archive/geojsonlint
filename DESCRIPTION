@@ -18,6 +18,7 @@ Depends:
 Imports:
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
+    jsonvalidate (>= 1.0.0),
     V8
 Suggests:
     testthat,

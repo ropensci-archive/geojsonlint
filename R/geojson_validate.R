@@ -30,7 +30,7 @@ geojson_validate.location <- function(x, verbose = FALSE, greedy = FALSE, error 
   res <- switch(attr(x, "type"),
                 file = paste0(readLines(x), collapse = ""),
                 url = jsonlite::minify(httr::content(httr::GET(x), "text", encoding = "UTF-8")))
-  validate_geojson(json = x, verbose = verbose, greedy = greedy, error = error)
+  validate_geojson(json = res, verbose = verbose, greedy = greedy, error = error)
 }
 
 #' @export

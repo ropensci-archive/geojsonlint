@@ -43,4 +43,4 @@ geojson_validate.json <- function(x, verbose = FALSE, greedy = FALSE, error = FA
   validate_geojson(json = x, verbose = verbose, greedy = greedy, error = error)
 }
 
-validate_geojson <- jsonvalidate::json_validator(system.file("schema/geojson.json", package = "geojsonlint"))
+# validate_geojson <- jsonvalidate::json_validator(system.file("schema/geojson.json", package = "geojsonlint"))

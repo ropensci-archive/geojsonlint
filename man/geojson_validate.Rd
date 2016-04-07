@@ -4,10 +4,11 @@
 \alias{geojson_validate}
 \title{geojson_validate}
 \usage{
-geojson_validate(json, verbose = FALSE, greedy = FALSE, error = FALSE)
+geojson_validate(x, verbose = FALSE, greedy = FALSE, error = FALSE)
 }
 \arguments{
-\item{json}{the json object}
+\item{x}{Input, a geojson character string, json object, or file or
+url pointing to one of the former}
 
 \item{verbose}{TRUE or FALSE}
 

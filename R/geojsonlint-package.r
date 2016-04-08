@@ -10,7 +10,7 @@
 #' 
 #' @importFrom httr GET POST stop_for_status upload_file content
 #' @importFrom jsonlite fromJSON toJSON validate minify unbox
-#' @importFrom V8 new_context
+#' @importFrom V8 v8
 #' @name geojsonlint
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @author Andy Teucher \email{andy.teucher@@gmail.com}

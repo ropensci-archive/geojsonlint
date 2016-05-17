@@ -4,14 +4,7 @@
 %\VignetteEncoding{UTF-8}
 -->
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE, 
-  message = FALSE
-)
-```
+
 
 geojsonlint vignette
 ====================
@@ -29,17 +22,20 @@ schema from [https://github.com/SchemaStore/schemastore](https://github.com/Sche
 
 Stable version from CRAN
 
-```{r eval=FALSE}
+
+```r
 install.packages("geojsonlint")
 ```
 
 Development version from GitHub
 
-```{r eval=FALSE}
+
+```r
 devtools::install_github("ropenscilabs/geojsonlint")
 ```
 
-```{r}
+
+```r
 library("geojsonlint")
 ```
 
@@ -47,67 +43,95 @@ library("geojsonlint")
 
 geojsonlint.com web service
 
-```{r}
+
+```r
 geojson_lint(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> [1] TRUE
 ```
 
 geojsonhint JS library
 
-```{r}
+
+```r
 geojson_hint(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> [1] TRUE
 ```
 
 is-my-json-valid JS library
 
-```{r}
+
+```r
 geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> [1] TRUE
 ```
 
 ## Bad GeoJSON
 
 geojsonlint.com web service
 
-```{r}
+
+```r
 geojson_lint('{"type": "FooBar"}')
+#> [1] FALSE
 ```
 
 geojsonhint JS library
 
-```{r}
+
+```r
 geojson_hint('{"type": "FooBar"}')
+#> [1] FALSE
 ```
 
 is-my-json-valid JS library
 
-```{r}
+
+```r
 geojson_validate('{ "type": "FeatureCollection" }')
+#> [1] FALSE
 ```
 
 ## Bad GeoJSON - with reason for failure
 
 geojsonlint.com web service
 
-```{r}
+
+```r
 geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   status                               message
+#> 1  error "FooBar" is not a valid GeoJSON type.
 ```
 
 geojsonhint JS library
 
-```{r}
+
+```r
 geojson_hint('{"type": "FooBar"}', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   line                    message
+#> 1    1 The type FooBar is unknown
 ```
 
 is-my-json-valid JS library
 
-```{r}
+
+```r
 geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   field                             message
+#> 1  data no (or more than one) schemas match
 ```
 
 ## Bad GeoJSON - stop on validation failure
 
 geojsonlint.com web service
 
-```{r eval=FALSE}
+
+```r
 geojson_lint('{"type": "FooBar"}', error = TRUE)
 #> Error: invalid GeoJSON 
 #>    - "FooBar" is not a valid GeoJSON type.
@@ -115,7 +139,8 @@ geojson_lint('{"type": "FooBar"}', error = TRUE)
 
 geojsonhint JS library
 
-```{r eval=FALSE}
+
+```r
 geojson_hint('{"type": "FooBar"}', error = TRUE)
 #> Error: Line 1
 #>    - The type FooBar is unknown
@@ -123,7 +148,8 @@ geojson_hint('{"type": "FooBar"}', error = TRUE)
 
 is-my-json-valid JS library
 
-```{r eval=FALSE}
+
+```r
 geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 #> Error: 1 error validating json:
 #> 	- data: no (or more than one) schemas match

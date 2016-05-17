@@ -1,5 +1,6 @@
 #' Validate GeoJSON using geojsonlint.com web service
-#'
+#' 
+#' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
 #' @param verbose When geojson is invalid, return reason why (\code{TRUE}) or don't 

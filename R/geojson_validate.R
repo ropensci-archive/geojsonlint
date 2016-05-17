@@ -3,11 +3,13 @@
 #' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param verbose When geojson is invalid, return reason why (\code{TRUE}) or don't
+#' @param verbose (logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
 #' return reason (\code{FALSE}). Default: \code{FALSE}
-#' @param greedy Continue after the first error? \code{TRUE} or \code{FALSE}.
+#' @param greedy (logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
 #' Default: \code{FALSE}
-#' @param error \code{TRUE} or \code{FALSE}. Default: \code{FALSE}
+#' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then 
+#' function returns \code{NULL} on success, and \code{stop} with the 
+#' error message on error. Default: \code{FALSE}
 #'
 #' @importFrom jsonvalidate json_validator
 #'
@@ -32,6 +34,13 @@
 #' # toggle whether reason for validation failure is given back
 #' geojson_validate('{ "type": "FeatureCollection" }')
 #' geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' 
+#' # toggle whether to stop with error message
+#' geojson_validate('{ "type": "FeatureCollection" }')
+#' geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' if (interactive()) {
+#'   geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
+#' }
 geojson_validate <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
   UseMethod("geojson_validate")
 }

@@ -10,13 +10,15 @@ geojson_validate(x, verbose = FALSE, greedy = FALSE, error = FALSE)
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{When geojson is invalid, return reason why (\code{TRUE}) or don't
+\item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
 return reason (\code{FALSE}). Default: \code{FALSE}}
 
-\item{greedy}{Continue after the first error? \code{TRUE} or \code{FALSE}.
+\item{greedy}{(logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
 Default: \code{FALSE}}
 
-\item{error}{\code{TRUE} or \code{FALSE}. Default: \code{FALSE}}
+\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
+function returns \code{NULL} on success, and \code{stop} with the 
+error message on error. Default: \code{FALSE}}
 }
 \value{
 \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
@@ -41,6 +43,13 @@ geojson_validate(as.location(url))
 # toggle whether reason for validation failure is given back
 geojson_validate('{ "type": "FeatureCollection" }')
 geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+
+# toggle whether to stop with error message
+geojson_validate('{ "type": "FeatureCollection" }')
+geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+if (interactive()) {
+  geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
+}
 }
 \references{
 \url{https://www.npmjs.com/package/is-my-json-valid}

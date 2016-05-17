@@ -3,8 +3,11 @@
 #' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param verbose When geojson is invalid, return reason why (\code{TRUE}) or don't 
+#' @param verbose (logical) When geojson is invalid, return reason why (\code{TRUE}) or don't 
 #' return reason (\code{FALSE}). Default: \code{FALSE}
+#' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then 
+#' function returns \code{TRUE} on success, and \code{stop} with the 
+#' error message on error. Default: \code{FALSE}
 #' @param ... curl options passed on to \code{\link[httr]{GET}} or
 #' \code{\link[httr]{POST}}
 #'
@@ -29,39 +32,46 @@
 #' # toggle whether reason for validation failure is given back
 #' geojson_lint('{ "type": "FeatureCollection" }')
 #' geojson_lint('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' 
+#' # toggle whether to stop with error message
+#' geojson_lint('{ "type": "FeatureCollection" }')
+#' geojson_lint('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' if (interactive()) {
+#'   geojson_lint('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
-geojson_lint <- function(x, verbose = FALSE, ...) {
+#' }
+geojson_lint <- function(x, verbose = FALSE, error = FALSE, ...) {
   UseMethod("geojson_lint")
 }
 
 #' @export
-geojson_lint.default <- function(x, verbose = FALSE, ...) {
+geojson_lint.default <- function(x, verbose = FALSE, error = FALSE, ...) {
   stop("no geojson_lint method for ", class(x), call. = FALSE)
 }
 
 #' @export
-geojson_lint.character <- function(x, verbose = FALSE, ...) {
+geojson_lint.character <- function(x, verbose = FALSE, error = FALSE, ...) {
   if (!jsonlite::validate(x)) stop("invalid json string", call. = FALSE)
   res <- httr::POST(geojsonlint_url(), body = x, ...)
-  req_proc(res, verbose)
+  req_proc(res, verbose, error)
 }
 
 #' @export
-geojson_lint.location <- function(x, verbose = FALSE, ...) {
+geojson_lint.location <- function(x, verbose = FALSE, error = FALSE, ...) {
   res <- switch(attr(x, "type"),
                 file = httr::POST(geojsonlint_url(), body = httr::upload_file(x[[1]]), ...),
                 url = httr::GET(geojsonlint_url(), query = list(url = x[[1]]), ...))
-  req_proc(res, verbose)
+  req_proc(res, verbose, error)
 }
 
 #' @export
-geojson_lint.json <- function(x, verbose = FALSE, ...) {
-  req_proc(write_post(x, ...), verbose)
+geojson_lint.json <- function(x, verbose = FALSE, error = FALSE, ...) {
+  req_proc(write_post(x, ...), verbose, error)
 }
 
 #' @export
-geojson_lint.geojson <- function(x, verbose = FALSE, ...) {
-  req_proc(write_post(unclass(x), ...), verbose)
+geojson_lint.geojson <- function(x, verbose = FALSE, error = FALSE, ...) {
+  req_proc(write_post(unclass(x), ...), verbose, error)
 }
 
 # helpers -----------------------------------
@@ -71,18 +81,22 @@ write_post <- function(x, verbose, ...) {
   httr::POST(geojsonlint_url(), body = httr::upload_file(file), ...)
 }
 
-req_proc <- function(x, verbose) {
+req_proc <- function(x, verbose, error) {
   httr::stop_for_status(x)
   res <- jsonlite::fromJSON(httr::content(x, "text", encoding = "UTF-8"))
-  if (res$status == "ok") {
-    return(TRUE)
+  if (error && res$status == "error") {
+    stop(res$message, call. = FALSE)
   } else {
-    if (verbose) {
-      tmp <- FALSE
-      attr(tmp, "errors") <- data.frame(rev(res), stringsAsFactors = FALSE)
-      return(tmp)
+    if (res$status == "ok") {
+      return(TRUE)
     } else {
-      return(FALSE)
+      if (verbose) {
+        tmp <- FALSE
+        attr(tmp, "errors") <- data.frame(rev(res), stringsAsFactors = FALSE)
+        return(tmp)
+      } else {
+        return(FALSE)
+      }
     }
   }
 }

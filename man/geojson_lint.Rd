@@ -4,14 +4,18 @@
 \alias{geojson_lint}
 \title{Validate GeoJSON using geojsonlint.com web service}
 \usage{
-geojson_lint(x, verbose = FALSE, ...)
+geojson_lint(x, verbose = FALSE, error = FALSE, ...)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{When geojson is invalid, return reason why (\code{TRUE}) or don't 
+\item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE}) or don't 
 return reason (\code{FALSE}). Default: \code{FALSE}}
+
+\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
+function returns \code{TRUE} on success, and \code{stop} with the 
+error message on error. Default: \code{FALSE}}
 
 \item{...}{curl options passed on to \code{\link[httr]{GET}} or
 \code{\link[httr]{POST}}}
@@ -43,6 +47,13 @@ geojson_lint(as.location(url))
 # toggle whether reason for validation failure is given back
 geojson_lint('{ "type": "FeatureCollection" }')
 geojson_lint('{ "type": "FeatureCollection" }', verbose = TRUE)
+
+# toggle whether to stop with error message
+geojson_lint('{ "type": "FeatureCollection" }')
+geojson_lint('{ "type": "FeatureCollection" }', verbose = TRUE)
+if (interactive()) {
+  geojson_lint('{ "type": "FeatureCollection" }', error = TRUE)
+}
 }
 }
 

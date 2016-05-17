@@ -4,7 +4,7 @@
 \alias{geojson_lint}
 \title{Validate GeoJSON using geojsonlint.com}
 \usage{
-geojson_lint(x, ...)
+geojson_lint(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or

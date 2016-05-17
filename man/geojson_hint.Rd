@@ -4,7 +4,7 @@
 \alias{geojson_hint}
 \title{Lint GeoJSON using geojsonhint Javascript library}
 \usage{
-geojson_hint(x, ...)
+geojson_hint(x, verbose = FALSE, ...)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or

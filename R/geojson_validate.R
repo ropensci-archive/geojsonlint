@@ -1,16 +1,36 @@
-#' geojson_validate
+#' Validate GeoJSON using is-my-json-valid Javascript library
 #'
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param verbose TRUE or FALSE
-#' @param greedy TRUE or FALSE
-#' @param error TRUE or FALSE
-#' 
+#' @param verbose When geojson is invalid, return reason why (\code{TRUE}) or don't
+#' return reason (\code{FALSE}). Default: \code{FALSE}
+#' @param greedy Continue after the first error? \code{TRUE} or \code{FALSE}.
+#' Default: \code{FALSE}
+#' @param error \code{TRUE} or \code{FALSE}. Default: \code{FALSE}
+#'
 #' @importFrom jsonvalidate json_validator
 #'
-#' @return TRUE or FALSE
-#' @export
+#' @return \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
+#' of name \code{errors} is added with error information
+#' 
+#' @references \url{https://www.npmjs.com/package/is-my-json-valid}
 #'
+#' @examples
+#' # From a json character string
+#' geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}') # good
+#' geojson_validate(x = '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}') # bad
+#'
+#' # A file
+#' file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
+#' geojson_validate(x = as.location(file))
+#'
+#' # A URL
+#' url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
+#' geojson_validate(as.location(url))
+#'
+#' # toggle whether reason for validation failure is given back
+#' geojson_validate('{ "type": "FeatureCollection" }')
+#' geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
 geojson_validate <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
   UseMethod("geojson_validate")
 }
@@ -42,5 +62,3 @@ geojson_validate.geojson <- function(x, verbose = FALSE, greedy = FALSE, error =
 geojson_validate.json <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
   validate_geojson(json = x, verbose = verbose, greedy = greedy, error = error)
 }
-
-# validate_geojson <- jsonvalidate::json_validator(system.file("schema/geojson.json", package = "geojsonlint"))

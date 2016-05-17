@@ -3,15 +3,16 @@
 #' @section Package API:
 #' \itemize{
 #'  \item \code{\link{geojson_hint}} - Checks validity of geojson using the Javascript library
-#'  geojsonhint
+#'  \code{geojsonhint}
 #'  \item \code{\link{geojson_lint}} - Checks validity of geojson using the web service at
-#'  http://geojsonlint.com/
+#'  \url{http://geojsonlint.com}
+#'  \item \code{\link{geojson_validate}} - Checks validity of geojson using a GeoJSON schema
+#'  and the Javascript library \code{is-my-json-valid}
 #' }
 #' 
-#' @importFrom httr GET POST stop_for_status upload_file content
-#' @importFrom jsonlite fromJSON toJSON validate minify unbox
 #' @importFrom V8 v8
-#' @name geojsonlint
+#' @name geojsonlint-package
+#' @aliases geojsonlint
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @author Andy Teucher \email{andy.teucher@@gmail.com}
 #' @docType package

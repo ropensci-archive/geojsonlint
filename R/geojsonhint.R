@@ -8,7 +8,6 @@
 #' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then 
 #' function returns \code{TRUE} on success, and \code{stop} with the 
 #' error message on error. Default: \code{FALSE}
-#' @param ... Further args passed on to helper functions.
 #' 
 #' @return \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
 #' of name \code{errors} is added with error information
@@ -46,23 +45,23 @@
 #' if (interactive()) {
 #'   geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
-geojson_hint <- function(x, verbose = FALSE, error = FALSE, ...) {
+geojson_hint <- function(x, verbose = FALSE, error = FALSE) {
   UseMethod("geojson_hint")
 }
 
 #' @export
-geojson_hint.default <- function(x, verbose = FALSE, error = FALSE, ...) {
+geojson_hint.default <- function(x, verbose = FALSE, error = FALSE) {
   stop("no geojson_hint method for ", class(x), call. = FALSE)
 }
 
 #' @export
-geojson_hint.character <- function(x, verbose = FALSE, error = FALSE, ...) {
+geojson_hint.character <- function(x, verbose = FALSE, error = FALSE) {
   if ( !jsonlite::validate(x) ) stop("invalid json string", call. = FALSE)
   lintit(x, verbose, error)
 }
 
 #' @export
-geojson_hint.location <- function(x, verbose = FALSE, error = FALSE, ...){
+geojson_hint.location <- function(x, verbose = FALSE, error = FALSE) {
   res <- switch(attr(x, "type"),
                 file = paste0(readLines(x), collapse = ""),
                 url = jsonlite::minify(httr::content(httr::GET(x), "text", encoding = "UTF-8")))
@@ -70,12 +69,12 @@ geojson_hint.location <- function(x, verbose = FALSE, error = FALSE, ...){
 }
 
 #' @export
-geojson_hint.json <- function(x, verbose = FALSE, error = FALSE, ...){
+geojson_hint.json <- function(x, verbose = FALSE, error = FALSE) {
   lintit(x, verbose, error)
 }
 
 #' @export
-geojson_hint.geojson <- function(x, verbose = FALSE, error = FALSE, ...){
+geojson_hint.geojson <- function(x, verbose = FALSE, error = FALSE) {
   lintit(unclass(x), verbose, error)
 }
 

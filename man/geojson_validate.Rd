@@ -4,7 +4,7 @@
 \alias{geojson_validate}
 \title{Validate GeoJSON using is-my-json-valid Javascript library}
 \usage{
-geojson_validate(x, verbose = FALSE, greedy = FALSE, error = FALSE)
+geojson_validate(x, verbose = FALSE, error = FALSE, greedy = FALSE)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or
@@ -13,12 +13,12 @@ url pointing to one of the former}
 \item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
 return reason (\code{FALSE}). Default: \code{FALSE}}
 
-\item{greedy}{(logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
-Default: \code{FALSE}}
-
 \item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
 function returns \code{NULL} on success, and \code{stop} with the 
 error message on error. Default: \code{FALSE}}
+
+\item{greedy}{(logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
+Default: \code{FALSE}}
 }
 \value{
 \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute

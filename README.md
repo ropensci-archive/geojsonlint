@@ -8,8 +8,19 @@ geojsonlint
 
 GeoJSON linters available in `geojsonlint`
 
-* [GeoJSON lint web service](http://geojsonlint.com/)
-* [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint)
+* [GeoJSON lint web service](http://geojsonlint.com/) - via `geojson_lint()`
+* [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint) - via `geojson_hint()`
+* [is-my-json-valid JS library](https://www.npmjs.com/package/is-my-json-valid) - via `geojson_validate()`
+
+All three functions return the same outputs. If the GeoJSON is valid, they return `TRUE`. 
+If the GeoJSON is invalid, they return `FALSE`, plus reason(s) that the GeoJSON is invalid
+in an attribute named _errors_ as a data.frame. The fields in the data.frame's are not 
+the same across functions unfortunately, but they can be easily coerced to combine via
+e.g., `plyr::rbind.fill` or `dplyr::bind_rows` or `data.table::rbindlist(fill = TRUE)`
+
+The parameters for the three functions are similar, though `geojson_validate()` has an 
+extra parameter `greedy` that's not available in the others, and `geojson_hint()` has
+`...` parameter to pass on curl options as it works with a web service.
 
 ## Installation
 
@@ -24,84 +35,120 @@ devtools::install_github("ropenscilabs/geojsonlint")
 library("geojsonlint")
 ```
 
-## geojsonlint.com web service
+## Good GeoJSON
 
-Bad GeoJSON
-
-
-```r
-geojson_lint(x = '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}')
-#> $message
-#> [1] "\"Rhombus\" is not a valid GeoJSON type."
-#> 
-#> $status
-#> [1] "error"
-```
-
-Good GeoJSON
+geojsonlint.com web service
 
 
 ```r
 geojson_lint(x = '{"type": "Point", "coordinates": [-100, 80]}')
-#> $status
-#> [1] "ok"
+#> [1] TRUE
 ```
 
-## geojsonhint JS module
+geojsonhint JS library
 
-Bad GeoJSON
+
+```r
+geojson_hint(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> [1] TRUE
+```
+
+is-my-json-valid JS library
+
+
+```r
+geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}')
+#> [1] TRUE
+```
+
+## Bad GeoJSON
+
+geojsonlint.com web service
+
+
+```r
+geojson_lint('{"type": "FooBar"}')
+#> [1] FALSE
+```
+
+geojsonhint JS library
 
 
 ```r
 geojson_hint('{"type": "FooBar"}')
-#> $message
-#> [1] "The type FooBar is unknown"
-#> 
-#> $line
-#> [1] 1
+#> [1] FALSE
 ```
+
+is-my-json-valid JS library
 
 
 ```r
-geojson_hint('{ "type": "FeatureCollection" }')
-#> $message
-#> [1] "\"features\" property required"
-#> 
-#> $line
-#> [1] 1
+geojson_validate('{ "type": "FeatureCollection" }')
+#> [1] FALSE
 ```
+
+## Bad GeoJSON - with reason for failure
+
+geojsonlint.com web service
 
 
 ```r
-geojson_hint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}')
-#> $message
-#> [1] "\"coordinates\" property required"
-#> 
-#> $line
-#> [1] 1
+geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   status                               message
+#> 1  error "FooBar" is not a valid GeoJSON type.
 ```
 
-Good GeoJSON
+geojsonhint JS library
 
 
 ```r
-geojson_hint('{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.8984375,
-          41.508577297439324
-        ]
-      }
-    }
-  ]
-}')
-#> [1] "valid"
+geojson_hint('{"type": "FooBar"}', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   line                    message
+#> 1    1 The type FooBar is unknown
+```
+
+is-my-json-valid JS library
+
+
+```r
+geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+#> [1] FALSE
+#> attr(,"errors")
+#>   field                             message
+#> 1  data no (or more than one) schemas match
+```
+
+## Bad GeoJSON - stop on validation failure
+
+geojsonlint.com web service
+
+
+```r
+geojson_lint('{"type": "FooBar"}', error = TRUE)
+#> Error: invalid GeoJSON 
+#>    - "FooBar" is not a valid GeoJSON type.
+```
+
+geojsonhint JS library
+
+
+```r
+geojson_hint('{"type": "FooBar"}', error = TRUE)
+#> Error: Line 1
+#>    - The type FooBar is unknown
+```
+
+is-my-json-valid JS library
+
+
+```r
+geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
+#> Error: 1 error validating json:
+#> 	- data: no (or more than one) schemas match
 ```
 
 ## Meta

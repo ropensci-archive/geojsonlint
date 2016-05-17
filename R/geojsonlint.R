@@ -85,7 +85,7 @@ req_proc <- function(x, verbose, error) {
   httr::stop_for_status(x)
   res <- jsonlite::fromJSON(httr::content(x, "text", encoding = "UTF-8"))
   if (error && res$status == "error") {
-    stop(res$message, call. = FALSE)
+    stop("invalid GeoJSON \n    - ", res$message, call. = FALSE)
   } else {
     if (res$status == "ok") {
       return(TRUE)

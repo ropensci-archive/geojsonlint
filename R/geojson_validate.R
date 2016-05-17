@@ -5,11 +5,11 @@
 #' url pointing to one of the former
 #' @param verbose (logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
 #' return reason (\code{FALSE}). Default: \code{FALSE}
-#' @param greedy (logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
-#' Default: \code{FALSE}
 #' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then 
 #' function returns \code{NULL} on success, and \code{stop} with the 
 #' error message on error. Default: \code{FALSE}
+#' @param greedy (logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
+#' Default: \code{FALSE}
 #'
 #' @importFrom jsonvalidate json_validator
 #'
@@ -41,22 +41,22 @@
 #' if (interactive()) {
 #'   geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
-geojson_validate <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
+geojson_validate <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE) {
   UseMethod("geojson_validate")
 }
 
 #' @export
-geojson_validate.default <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
+geojson_validate.default <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE) {
   stop("no geojson_validate method for ", class(x), call. = FALSE)
 }
 
 #' @export
-geojson_validate.character <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
+geojson_validate.character <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE) {
   validate_geojson(json = x, verbose = verbose, greedy = greedy, error = error)
 }
 
 #' @export
-geojson_validate.location <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE){
+geojson_validate.location <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE){
   res <- switch(attr(x, "type"),
                 file = paste0(readLines(x), collapse = ""),
                 url = jsonlite::minify(httr::content(httr::GET(x), "text", encoding = "UTF-8")))
@@ -64,11 +64,11 @@ geojson_validate.location <- function(x, verbose = FALSE, greedy = FALSE, error 
 }
 
 #' @export
-geojson_validate.geojson <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE){
+geojson_validate.geojson <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE){
   validate_geojson(json = unclass(x), verbose = verbose, greedy = greedy, error = error)
 }
 
 #' @export
-geojson_validate.json <- function(x, verbose = FALSE, greedy = FALSE, error = FALSE) {
+geojson_validate.json <- function(x, verbose = FALSE, error = FALSE, greedy = FALSE) {
   validate_geojson(json = x, verbose = verbose, greedy = greedy, error = error)
 }

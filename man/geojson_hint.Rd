@@ -4,7 +4,7 @@
 \alias{geojson_hint}
 \title{Validate GeoJSON using geojsonhint Javascript library}
 \usage{
-geojson_hint(x, verbose = FALSE, error = FALSE, ...)
+geojson_hint(x, verbose = FALSE, error = FALSE)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or
@@ -16,8 +16,6 @@ return reason (\code{FALSE}). Default: \code{FALSE}}
 \item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
 function returns \code{TRUE} on success, and \code{stop} with the 
 error message on error. Default: \code{FALSE}}
-
-\item{...}{Further args passed on to helper functions.}
 }
 \value{
 \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute

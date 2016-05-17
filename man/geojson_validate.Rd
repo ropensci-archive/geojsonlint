@@ -2,7 +2,7 @@
 % Please edit documentation in R/geojson_validate.R
 \name{geojson_validate}
 \alias{geojson_validate}
-\title{geojson_validate}
+\title{Validate GeoJSON using is-my-json-valid Javascript library}
 \usage{
 geojson_validate(x, verbose = FALSE, greedy = FALSE, error = FALSE)
 }
@@ -10,16 +10,39 @@ geojson_validate(x, verbose = FALSE, greedy = FALSE, error = FALSE)
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{TRUE or FALSE}
+\item{verbose}{When geojson is invalid, return reason why (\code{TRUE}) or don't
+return reason (\code{FALSE}). Default: \code{FALSE}}
 
-\item{greedy}{TRUE or FALSE}
+\item{greedy}{Continue after the first error? \code{TRUE} or \code{FALSE}.
+Default: \code{FALSE}}
 
-\item{error}{TRUE or FALSE}
+\item{error}{\code{TRUE} or \code{FALSE}. Default: \code{FALSE}}
 }
 \value{
-TRUE or FALSE
+\code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
+of name \code{errors} is added with error information
 }
 \description{
-geojson_validate
+Validate GeoJSON using is-my-json-valid Javascript library
+}
+\examples{
+# From a json character string
+geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}') # good
+geojson_validate(x = '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}') # bad
+
+# A file
+file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
+geojson_validate(x = as.location(file))
+
+# A URL
+url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
+geojson_validate(as.location(url))
+
+# toggle whether reason for validation failure is given back
+geojson_validate('{ "type": "FeatureCollection" }')
+geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+}
+\references{
+\url{https://www.npmjs.com/package/is-my-json-valid}
 }
 

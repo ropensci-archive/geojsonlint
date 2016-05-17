@@ -2,7 +2,7 @@
 % Please edit documentation in R/geojsonhint.R
 \name{geojson_hint}
 \alias{geojson_hint}
-\title{Lint GeoJSON using geojsonhint Javascript library}
+\title{Validate GeoJSON using geojsonhint Javascript library}
 \usage{
 geojson_hint(x, verbose = FALSE, ...)
 }
@@ -10,13 +10,21 @@ geojson_hint(x, verbose = FALSE, ...)
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
+\item{verbose}{When geojson is invalid, return reason why (\code{TRUE}) or don't 
+return reason (\code{FALSE}). Default: \code{FALSE}}
+
 \item{...}{Further args passed on to helper functions.}
 }
+\value{
+\code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
+of name \code{errors} is added with error information
+}
 \description{
-Lint GeoJSON using geojsonhint Javascript library
+Validate GeoJSON using geojsonhint Javascript library
 }
 \details{
 Uses the Javascript library \url{https://www.npmjs.com/package/geojsonhint}
+via the \pkg{V8} package
 }
 \examples{
 geojson_hint('{"type": "FooBar"}')
@@ -35,5 +43,9 @@ geojson_hint(as.location(url))
 x <- jsonlite::minify('{ "type": "FeatureCollection" }')
 class(x)
 geojson_hint(x)
+
+# toggle whether reason for validation failure is given back
+geojson_hint('{ "type": "FeatureCollection" }')
+geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
 }
 

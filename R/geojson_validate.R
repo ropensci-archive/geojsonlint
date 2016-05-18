@@ -12,6 +12,13 @@
 #' Default: \code{FALSE}
 #'
 #' @importFrom jsonvalidate json_validator
+#' 
+#' @details Sometimes you may get a response that your input GeoJSON is invalid, but 
+#' get a somewhat unhelpful error message, e.g., \code{no (or more than one) schemas match}
+#' See \url{https://github.com/ropenscilabs/geojsonlint/issues/7#issuecomment-219881961}. 
+#' We'll hopefully soon get this sorted out so you'll get a meaningful error message. 
+#' However, this method is faster than the other two methods in this package, so 
+#' there is that.
 #'
 #' @return \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
 #' of name \code{errors} is added with error information

@@ -58,6 +58,7 @@ geojson_lint.character <- function(x, verbose = FALSE, error = FALSE, ...) {
 
 #' @export
 geojson_lint.location <- function(x, verbose = FALSE, error = FALSE, ...) {
+  on.exit(close_conns())
   res <- switch(attr(x, "type"),
                 file = httr::POST(geojsonlint_url(), body = httr::upload_file(x[[1]]), ...),
                 url = httr::GET(geojsonlint_url(), query = list(url = x[[1]]), ...))
@@ -76,6 +77,7 @@ geojson_lint.geojson <- function(x, verbose = FALSE, error = FALSE, ...) {
 
 # helpers -----------------------------------
 write_post <- function(x, verbose, ...) {
+  on.exit(close_conns())
   file <- tempfile(fileext = ".geojson")
   suppressMessages(gj_write(x, file = file))
   httr::POST(geojsonlint_url(), body = httr::upload_file(file), ...)

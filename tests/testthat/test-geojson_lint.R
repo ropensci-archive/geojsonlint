@@ -18,7 +18,7 @@ test_that("geojson_lint works when verbose output", {
   expect_false(a)
   expect_is(a, "logical")
   expect_named(attributes(a), "errors")
-  expect_named(attr(a, "errors"), c('status', 'message'))
+  expect_named(attr(a, "errors"), c('message', 'status'))
   expect_equal(attr(a, "errors")$message, "\"FooBar\" is not a valid GeoJSON type.")
   
   # valid - returns only a boolean because valid

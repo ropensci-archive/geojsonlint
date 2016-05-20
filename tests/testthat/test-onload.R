@@ -9,5 +9,5 @@ test_that("onload for geojsonhint worked", {
   expect_true(any(grepl("geojsonhint", ct$get(V8::JS("Object.keys(global)")))))
 
   expect_equal(ct$eval("geojsonhint"), "[object Object]")
-  expect_true(grepl("function hint\\(str\\)", ct$eval("geojsonhint.hint")))
+  expect_true(grepl("function hint\\(str, options\\)", ct$eval("geojsonhint.hint")))
 })

@@ -5,11 +5,13 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     (<https://www.npmjs.com/package/geojsonhint>), and validating against a
     GeoJSON schema via the Javascript library
     (<https://www.npmjs.com/package/is-my-json-valid>).
-Version: 0.0.7.9590
+Version: 0.0.8.9000
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Andy", "Teucher", role = "aut", email = "andy.teucher@gmail.com")
+    person("Andy", "Teucher", role = "aut", email = "andy.teucher@gmail.com"),
+    person("Tom", "MacWright", role = "cph", comment = "geojsonhint Javascript library"),
+    person("Mads", "Kristensen", role = "cph", comment = "geojson schema")
     )
 URL: https://github.com/ropenscilabs/geojsonlint
 BugReports: http://www.github.com/ropenscilabs/geojsonlint/issues

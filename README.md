@@ -9,7 +9,7 @@ geojsonlint
 GeoJSON linters available in `geojsonlint`
 
 * [GeoJSON lint web service](http://geojsonlint.com/) - via `geojson_lint()`
-* [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint) - via `geojson_hint()`
+* [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint) - via `geojson_hint()` - currently using `geojsonhint` `v1.2.1`
 * [is-my-json-valid JS library](https://www.npmjs.com/package/is-my-json-valid) - via `geojson_validate()`
 
 All three functions return the same outputs. If the GeoJSON is valid, they return `TRUE`. 
@@ -96,8 +96,8 @@ geojsonlint.com web service
 geojson_lint('{"type": "FooBar"}', verbose = TRUE)
 #> [1] FALSE
 #> attr(,"errors")
-#>   status                               message
-#> 1  error "FooBar" is not a valid GeoJSON type.
+#>                                 message status
+#> 1 "FooBar" is not a valid GeoJSON type.  error
 ```
 
 geojsonhint JS library

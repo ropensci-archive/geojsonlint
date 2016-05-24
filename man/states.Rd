@@ -4,9 +4,10 @@
 \name{states}
 \alias{states}
 \title{This is the same data set from the ggplot2 library}
+\format{A data.frame with 6 components, including "long", "lat", "group", "order",
+"region", and "subregion" columns specifying polygons for each US state.}
 \description{
-This is a data.frame with "long", "lat", "group", "order", "region", and "subregion" 
-columns specifying polygons for each US state.
+This is the same data set from the ggplot2 library
 }
 \keyword{data}
 

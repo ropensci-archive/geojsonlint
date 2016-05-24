@@ -48,10 +48,9 @@ NULL
 
 #' This is the same data set from the ggplot2 library
 #' 
-#' This is a data.frame with "long", "lat", "group", "order", "region", and "subregion" 
-#' columns specifying polygons for each US state.
-#'
 #' @name states
+#' @format A data.frame with 6 components, including "long", "lat", "group", "order",
+#' "region", and "subregion" columns specifying polygons for each US state.
 #' @docType data
 #' @keywords data
 NULL

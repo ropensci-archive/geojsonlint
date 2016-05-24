@@ -1,11 +1,12 @@
 Package: geojsonlint
-Title: Lint 'GeoJSON'
+Title: Tools for Validating 'GeoJSON'
 Description: Tools for linting 'GeoJSON'. Includes tools for interacting with the
     online tool <http://geojsonlint.com>, the Javascript library geojsonhint
     (<https://www.npmjs.com/package/geojsonhint>), and validating against a
     GeoJSON schema via the Javascript library
-    (<https://www.npmjs.com/package/is-my-json-valid>).
-Version: 0.0.8.9000
+    (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
+    while others require an internet connection.
+Version: 0.0.8.9300
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),

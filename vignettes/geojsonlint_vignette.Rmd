@@ -1,8 +1,13 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{geojsonlint vignette}
-%\VignetteEncoding{UTF-8}
--->
+---
+title: "Introduction to the geojsonlint package"
+author: "Scott Chamberlain and Andy Teucher"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the geojsonlint packages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
@@ -12,9 +17,6 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 ```
-
-geojsonlint vignette
-====================
 
 Tools for linting 'GeoJSON'.
 

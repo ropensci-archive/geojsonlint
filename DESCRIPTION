@@ -6,7 +6,7 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     GeoJSON schema via the Javascript library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
-Version: 0.0.8.9300
+Version: 0.0.9.9991
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
@@ -29,5 +29,6 @@ Remotes: ropenscilabs/jsonvalidate
 Suggests:
     testthat,
     knitr,
+    rmarkdown (>= 0.9.6),
     covr
 RoxygenNote: 5.0.1

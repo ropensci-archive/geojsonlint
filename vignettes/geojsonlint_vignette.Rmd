@@ -4,7 +4,7 @@ author: "Scott Chamberlain and Andy Teucher"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to the geojsonlint packages}
+  %\VignetteIndexEntry{Introduction to the geojsonlint package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

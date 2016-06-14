@@ -3,7 +3,7 @@ Title: Tools for Validating 'GeoJSON'
 Description: Tools for linting 'GeoJSON'. Includes tools for interacting with the
     online tool <http://geojsonlint.com>, the 'Javascript' library 'geojsonhint'
     (<https://www.npmjs.com/package/geojsonhint>), and validating against a
-    GeoJSON schema via the 'Javascript' library
+    'GeoJSON' schema via the 'Javascript' library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
 Version: 0.1.0.9000

@@ -5,6 +5,8 @@ geojsonlint
 
 [![Build Status](https://api.travis-ci.org/ropenscilabs/geojsonlint.png)](https://travis-ci.org/ropenscilabs/geojsonlint)
 [![codecov.io](https://codecov.io/github/ropenscilabs/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/geojsonlint?branch=master)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/geojsonlint)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/geojsonlint)](https://cran.r-project.org/package=geojsonlint)
 
 GeoJSON linters available in `geojsonlint`
 

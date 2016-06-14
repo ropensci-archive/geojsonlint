@@ -25,7 +25,6 @@ Imports:
     jsonlite (>= 0.9.19),
     jsonvalidate (>= 1.0.0),
     V8
-Remotes: ropenscilabs/jsonvalidate
 Suggests:
     testthat,
     knitr,

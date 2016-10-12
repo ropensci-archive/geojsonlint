@@ -70,5 +70,5 @@ test_that("geojson_hint works with json inputs", {
   expect_is(g, "logical")
   expect_false(g)
   expect_is(attributes(g), "list")
-  expect_equal(attr(g, "errors")$message, "\"features\" property required")
+  expect_equal(attr(g, "errors")$message, "\"features\" member required")
 })

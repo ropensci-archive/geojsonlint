@@ -39,20 +39,23 @@ test_that("geojson_hint works when verbose output", {
 
 test_that("geojson_hint works with file inputs", {
   file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
-  d <- geojson_hint(as.location(file))
+  d <- geojson_hint(as.location(file), verbose = TRUE)
   expect_is(as.location(file), "location")
   expect_is(d, "logical")
-  expect_true(d)
+  # with geojsonhint v2 library, now right hand rule checked
+  expect_false(d)
+  expect_match(attr(d, "errors")$message[1], "right-hand rule")
 })
 
 test_that("geojson_hint works with url inputs", {
   skip_on_cran()
 
   url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
-  e <- geojson_hint(as.location(url))
+  e <- geojson_hint(as.location(url), verbose = TRUE)
   expect_is(as.location(url), "location")
   expect_is(e, "logical")
-  expect_true(e)
+  expect_false(e)
+  expect_match(attr(e, "errors")$message[1], "right-hand rule")
 })
 
 test_that("geojson_hint works with json inputs", {

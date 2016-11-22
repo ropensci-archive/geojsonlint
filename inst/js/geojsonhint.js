@@ -255,6 +255,7 @@ function hint(gj, options) {
                         message: 'the first and last positions in a LinearRing of coordinates must be the same',
                         line: line
                     });
+                    return true;
                 }
             } else if (type === 'Line' && coords.length < 2) {
                 return errors.push({
@@ -269,8 +270,11 @@ function hint(gj, options) {
                 line: line
             });
         } else {
-            coords.forEach(function(c) {
-                positionArray(c, type, depth - 1, c.__line__ || line);
+            var results = coords.map(function(c) {
+                return positionArray(c, type, depth - 1, c.__line__ || line);
+            });
+            return results.some(function(r) {
+                return r;
             });
         }
     }
@@ -525,10 +529,10 @@ function isRingClockwise (coords) {
 
 function isPolyRHR (coords) {
     if (coords && coords.length > 0) {
-        if (!isRingClockwise(coords[0]))
+        if (isRingClockwise(coords[0]))
             return false;
         var interiorCoords = coords.slice(1, coords.length);
-        if (interiorCoords.some(isRingClockwise))
+        if (!interiorCoords.every(isRingClockwise))
             return false;
     }
     return true;

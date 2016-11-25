@@ -14,8 +14,8 @@ Authors@R: c(
     person("Tom", "MacWright", role = "cph", comment = "geojsonhint Javascript library"),
     person("Mads", "Kristensen", role = "cph", comment = "geojson schema")
     )
-URL: https://github.com/ropenscilabs/geojsonlint
-BugReports: https://github.com/ropenscilabs/geojsonlint/issues
+URL: https://github.com/ropensci/geojsonlint
+BugReports: https://github.com/ropensci/geojsonlint/issues
 LazyData: true
 VignetteBuilder: knitr
 Depends:

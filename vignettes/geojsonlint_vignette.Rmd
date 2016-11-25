@@ -38,7 +38,7 @@ install.packages("geojsonlint")
 Development version from GitHub
 
 ```{r eval=FALSE}
-devtools::install_github("ropenscilabs/geojsonlint")
+devtools::install_github("ropensci/geojsonlint")
 ```
 
 ```{r}

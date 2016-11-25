@@ -3,8 +3,8 @@ geojsonlint
 
 
 
-[![Build Status](https://api.travis-ci.org/ropenscilabs/geojsonlint.png)](https://travis-ci.org/ropenscilabs/geojsonlint)
-[![codecov.io](https://codecov.io/github/ropenscilabs/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/geojsonlint?branch=master)
+[![Build Status](https://api.travis-ci.org/ropensci/geojsonlint.png)](https://travis-ci.org/ropensci/geojsonlint)
+[![codecov.io](https://codecov.io/github/ropensci/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropensci/geojsonlint?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/geojsonlint)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/geojsonlint)](https://cran.r-project.org/package=geojsonlint)
 
@@ -14,13 +14,13 @@ GeoJSON linters available in `geojsonlint`
 * [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint) - via `geojson_hint()` - currently using `geojsonhint` `v1.2.1`
 * [is-my-json-valid JS library](https://www.npmjs.com/package/is-my-json-valid) - via `geojson_validate()`
 
-All three functions return the same outputs. If the GeoJSON is valid, they return `TRUE`. 
+All three functions return the same outputs. If the GeoJSON is valid, they return `TRUE`.
 If the GeoJSON is invalid, they return `FALSE`, plus reason(s) that the GeoJSON is invalid
-in an attribute named _errors_ as a data.frame. The fields in the data.frame's are not 
+in an attribute named _errors_ as a data.frame. The fields in the data.frame's are not
 the same across functions unfortunately, but they can be easily coerced to combine via
 e.g., `plyr::rbind.fill` or `dplyr::bind_rows` or `data.table::rbindlist(fill = TRUE)`
 
-The parameters for the three functions are similar, though `geojson_validate()` has an 
+The parameters for the three functions are similar, though `geojson_validate()` has an
 extra parameter `greedy` that's not available in the others, and `geojson_hint()` has
 `...` parameter to pass on curl options as it works with a web service.
 
@@ -29,7 +29,7 @@ extra parameter `greedy` that's not available in the others, and `geojson_hint()
 
 ```r
 install.packages("devtools")
-devtools::install_github("ropenscilabs/geojsonlint")
+devtools::install_github("ropensci/geojsonlint")
 ```
 
 
@@ -131,7 +131,7 @@ geojsonlint.com web service
 
 ```r
 geojson_lint('{"type": "FooBar"}', error = TRUE)
-#> Error: invalid GeoJSON 
+#> Error: invalid GeoJSON
 #>    - "FooBar" is not a valid GeoJSON type.
 ```
 
@@ -155,7 +155,7 @@ geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropenscilabs/geojsonlint/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/geojsonlint/issues).
 * License: MIT
 * Get citation information for `geojsonlint` in R doing `citation(package = 'geojsonlint')`
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

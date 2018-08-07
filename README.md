@@ -2,7 +2,7 @@ geojsonlint
 ===========
 
 
-
+[![cran checks](https://cranchecks.info/badges/worst/geojsonlint)](https://cranchecks.info/pkgs/geojsonlint)
 [![Build Status](https://api.travis-ci.org/ropensci/geojsonlint.png)](https://travis-ci.org/ropensci/geojsonlint)
 [![codecov.io](https://codecov.io/github/ropensci/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropensci/geojsonlint?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/geojsonlint)](https://github.com/metacran/cranlogs.app)

@@ -1,3 +1,13 @@
+geojsonlint 0.3.0
+=================
+
+## MINOR IMPROVEMENTS
+
+* update JS library `geojsonhint` to `v2.1.0` (#11)
+* replace `httr` with `crul` (#12)
+* the parameter `verbose` replaced with `inform` throughout the package. take note if you have `verbose` parameter in use in any R code
+
+
 geojsonlint 0.2.0
 =================
 

@@ -20,7 +20,7 @@
 
 ---
 
-This version swaps out a dependency, and updates geojsonhint JS library.
+This version swaps out a dependency, and updates the included geojsonhint Javascript library.
 
 Thanks! 
 Scott Chamberlain

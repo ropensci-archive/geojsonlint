@@ -5,3 +5,6 @@ yep.geojson
 myfile.geojson
 .V8history
 .DS_Store
+revdep/checks.noindex
+revdep/data.sqlite
+revdep/library.noindex

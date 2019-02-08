@@ -17,3 +17,4 @@ myfile.geojson
 ^cran-comments\.md$
 ^codemeta\.json$
 .github
+revdep

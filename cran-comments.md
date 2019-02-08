@@ -1,9 +1,8 @@
 ## Test environments
 
-* local OS X install, R 3.3.2
-* ubuntu 12.04 (on travis-ci), R 3.3.2
+* local OS X install, R 3.5.2
+* ubuntu 14.04 (on travis-ci), R 3.5.2
 * win-builder (devel and release)
-* R-hub (Windows oldrel, Ubuntu release, Fedora devel)
 
 ## R CMD check results
 
@@ -12,16 +11,16 @@
    License components with restrictions and base license permitting such:
      MIT + file LICENSE
    File 'LICENSE':
-     YEAR: 2016
+     YEAR: 2019
      COPYRIGHT HOLDER: Scott Chamberlain
 
 ## Reverse dependencies
 
-There are no reverse dependencies.
+* I have run R CMD check on the 2 downstream dependencies. (Summary at <https://github.com/ropensci/geojsonlint/blob/master/revdep/README.md>). No problems were found.
 
 ---
 
-This version includes an updated javascript library (geojsonhint).
+This version swaps out a dependency, and updates geojsonhint JS library.
 
 Thanks! 
 Scott Chamberlain

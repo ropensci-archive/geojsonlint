@@ -13,8 +13,8 @@ test_that("geojson_lint works with character inputs", {
   expect_false(geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}'))
 })
 
-test_that("geojson_lint works when verbose output", {
-  a <- geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+test_that("geojson_lint works when quiet output", {
+  a <- geojson_lint('{"type": "FooBar"}', quiet = FALSE)
   expect_false(a)
   expect_is(a, "logical")
   expect_named(attributes(a), "errors")
@@ -22,14 +22,14 @@ test_that("geojson_lint works when verbose output", {
   expect_equal(attr(a, "errors")$message, "\"FooBar\" is not a valid GeoJSON type.")
   
   # valid - returns only a boolean because valid
-  expect_true(geojson_lint('{"type": "Point", "coordinates": [-80,40]}', verbose = TRUE))
+  expect_true(geojson_lint('{"type": "Point", "coordinates": [-80,40]}', quiet = FALSE))
   
   # invalid - returns attributes with error reason because not valid
-  bb <- geojson_lint('{ "type": "FeatureCollection" }', verbose = TRUE)
+  bb <- geojson_lint('{ "type": "FeatureCollection" }', quiet = FALSE)
   expect_is(bb, "logical")
   expect_is(attributes(bb)[[1]], "data.frame")
   
-  cc <- geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}', verbose = TRUE)
+  cc <- geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}', quiet = FALSE)
   expect_is(cc, "logical")
   expect_is(attributes(cc)[[1]], "data.frame")
 })
@@ -54,13 +54,13 @@ test_that("geojson_lint works with json inputs", {
   x <- jsonlite::minify('{ "type": "FeatureCollection" }')
   expect_is(x, "json")
   
-  # without verbose
+  # without quiet
   f <- geojson_lint(x)
   expect_is(f, "logical")
   expect_null(attributes(f))
   
-  # with verbose
-  g <- geojson_lint(x, verbose = TRUE)
+  # with quiet
+  g <- geojson_lint(x, quiet = FALSE)
   expect_is(g, "logical")
   expect_equal(attr(g, "errors")$message, "A FeatureCollection must have a \"features\" property.")
 })

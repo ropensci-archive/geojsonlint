@@ -1,6 +1,8 @@
 context("geojson_lint")
 
 test_that("geojson_lint works with character inputs", {
+  skip_on_cran()
+
   a <- geojson_lint('{"type": "FooBar"}')
   expect_is(a, "logical")
   expect_false(a)
@@ -15,6 +17,8 @@ test_that("geojson_lint works with character inputs", {
 })
 
 test_that("geojson_lint works when inform output", {
+  skip_on_cran()
+
   a <- geojson_lint('{"type": "FooBar"}', inform = TRUE)
 
   expect_false(a)
@@ -37,6 +41,8 @@ test_that("geojson_lint works when inform output", {
 })
 
 test_that("geojson_lint works with file inputs", {
+  skip_on_cran()
+
   file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
   d <- geojson_lint(as.location(file))
   expect_is(as.location(file), "location")
@@ -53,6 +59,8 @@ test_that("geojson_lint works with url inputs", {
 })
 
 test_that("geojson_lint works with json inputs", {
+  skip_on_cran()
+  
   x <- jsonlite::minify('{ "type": "FeatureCollection" }')
   expect_is(x, "json")
   

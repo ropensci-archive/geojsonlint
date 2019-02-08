@@ -48,6 +48,8 @@ test_that("geojson_hint works with file inputs", {
 })
 
 test_that("geojson_hint works with url inputs", {
+  skip_on_cran()
+  
   url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
   e <- geojson_hint(as.location(url), inform = TRUE)
   expect_is(as.location(url), "location")

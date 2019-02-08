@@ -13,6 +13,6 @@ README.Rmd
 .V8history
 cran-comments.md
 myfile.geojson
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
 ^codemeta\.json$

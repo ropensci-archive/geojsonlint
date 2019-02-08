@@ -22,7 +22,7 @@ file <- system.file("examples", "zillow_or.geojson",
 as.location(file)
 
 # A URL
-url <- paset0("https://raw.githubusercontent.com/glynnbird/",
+url <- paste0("https://raw.githubusercontent.com/glynnbird/",
   "usstatesgeojson/master/california.geojson")
 as.location(url)
 }

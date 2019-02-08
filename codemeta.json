@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/ropensci/geojsonlint",
   "issueTracker": "https://github.com/ropensci/geojsonlint/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.9.9100",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -161,7 +161,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/geojsonlint",
   "releaseNotes": "https://github.com/ropensci/geojsonlint/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/geojsonlint/blob/master/README.md",
-  "fileSize": "882.5KB",
+  "fileSize": "882.679KB",
   "keywords": ["geojson", "geospatial", "lint", "hint", "data", "schema", "linter", "r", "rstats", "r-package"],
   "applicationCategory": "Geospatial",
   "isPartOf": "https://ropensci.org"

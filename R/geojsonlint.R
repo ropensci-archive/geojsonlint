@@ -3,8 +3,8 @@
 #' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param quiet (logical) When geojson is invalid, return reason why
-#' (`FALSE`) or don't return reason (`TRUE`). Default: `TRUE`
+#' @param inform (logical) When geojson is invalid, return reason why
+#' (`TRUE`) or don't return reason (`FALSE`). Default: `FALSE`
 #' @param error (logical) Throw an error on parse failure? If `TRUE`, then
 #' function returns `TRUE` on success, and \code{stop} with the
 #' error message on error. Default: `FALSE`
@@ -13,7 +13,7 @@
 #'
 #' @details Uses the web service at <http://geojsonlint.com>
 #'
-#' @return `TRUE` or `FALSE`. If `quiet=TRUE` an attribute
+#' @return `TRUE` or `FALSE`. If `inform=TRUE` an attribute
 #' of name \code{errors} is added with error information
 #'
 #' @examples \dontrun{
@@ -40,61 +40,61 @@
 #'
 #' # toggle whether reason for validation failure is given back
 #' geojson_lint('{ "type": "FeatureCollection" }')
-#' geojson_lint('{ "type": "FeatureCollection" }', quiet = TRUE)
+#' geojson_lint('{ "type": "FeatureCollection" }', inform = TRUE)
 #'
 #' # toggle whether to stop with error message
 #' geojson_lint('{ "type": "FeatureCollection" }')
-#' geojson_lint('{ "type": "FeatureCollection" }', quiet = TRUE)
+#' geojson_lint('{ "type": "FeatureCollection" }', inform = TRUE)
 #' if (interactive()) {
 #'   geojson_lint('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
 #' }
-geojson_lint <- function(x, quiet = TRUE, error = FALSE, ...) {
+geojson_lint <- function(x, inform = FALSE, error = FALSE, ...) {
   UseMethod("geojson_lint")
 }
 
 #' @export
-geojson_lint.default <- function(x, quiet = TRUE, error = FALSE, ...) {
+geojson_lint.default <- function(x, inform = FALSE, error = FALSE, ...) {
   stop("no geojson_lint method for ", class(x), call. = FALSE)
 }
 
 #' @export
-geojson_lint.character <- function(x, quiet = TRUE, error = FALSE, ...) {
+geojson_lint.character <- function(x, inform = FALSE, error = FALSE, ...) {
   if (!jsonlite::validate(x)) stop("invalid json string", call. = FALSE)
   res <- c_post(geojsonlint_url(), body = x, ...)
-  req_proc(res, quiet, error)
+  req_proc(res, inform, error)
 }
 
 #' @export
-geojson_lint.location <- function(x, quiet = TRUE, error = FALSE, ...) {
+geojson_lint.location <- function(x, inform = FALSE, error = FALSE, ...) {
   on.exit(close_conns())
   res <- switch(
     attr(x, "type"),
     file = c_post(geojsonlint_url(), body = crul::upload(x[[1]]), ...),
     url = c_get(geojsonlint_url(), args = list(url = x[[1]]), ...)
   )
-  req_proc(res, quiet, error)
+  req_proc(res, inform, error)
 }
 
 #' @export
-geojson_lint.json <- function(x, quiet = TRUE, error = FALSE, ...) {
-  req_proc(write_post(x, ...), quiet, error)
+geojson_lint.json <- function(x, inform = FALSE, error = FALSE, ...) {
+  req_proc(write_post(x, ...), inform, error)
 }
 
 #' @export
-geojson_lint.geojson <- function(x, quiet = TRUE, error = FALSE, ...) {
-  req_proc(write_post(unclass(x), ...), quiet, error)
+geojson_lint.geojson <- function(x, inform = FALSE, error = FALSE, ...) {
+  req_proc(write_post(unclass(x), ...), inform, error)
 }
 
 # helpers -----------------------------------
-write_post <- function(x, quiet, ...) {
+write_post <- function(x, inform, ...) {
   on.exit(close_conns())
   file <- tempfile(fileext = ".geojson")
   suppressMessages(gj_write(x, file = file))
   c_post(geojsonlint_url(), body = crul::upload(file), ...)
 }
 
-req_proc <- function(x, quiet, error) {
+req_proc <- function(x, inform, error) {
   x$raise_for_status()
   res <- jsonlite::fromJSON(x$parse("UTF-8"))
   if (error && res$status == "error") {
@@ -103,7 +103,7 @@ req_proc <- function(x, quiet, error) {
     if (res$status == "ok") {
       return(TRUE)
     } else {
-      if (!quiet) {
+      if (inform) {
         tmp <- FALSE
         attr(tmp, "errors") <- data.frame(rev(res), stringsAsFactors = FALSE)
         return(tmp)

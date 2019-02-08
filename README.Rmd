@@ -34,9 +34,16 @@ extra parameter `greedy` that's not available in the others, and `geojson_hint()
 
 ## Installation
 
+from CRAN
+
 ```{r eval=FALSE}
-install.packages("devtools")
-devtools::install_github("ropensci/geojsonlint")
+install.packages("geojsonlint")
+```
+
+Dev version
+
+```{r eval=FALSE}
+remotes::install_github("ropensci/geojsonlint")
 ```
 
 ```{r}
@@ -88,19 +95,19 @@ geojson_validate('{ "type": "FeatureCollection" }')
 geojsonlint.com web service
 
 ```{r}
-geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+geojson_lint('{"type": "FooBar"}', inform = TRUE)
 ```
 
 geojsonhint JS library
 
 ```{r}
-geojson_hint('{"type": "FooBar"}', verbose = TRUE)
+geojson_hint('{"type": "FooBar"}', inform = TRUE)
 ```
 
 is-my-json-valid JS library
 
 ```{r}
-geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 ```
 
 ## Bad GeoJSON - stop on validation failure

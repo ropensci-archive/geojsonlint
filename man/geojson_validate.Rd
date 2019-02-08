@@ -4,13 +4,13 @@
 \alias{geojson_validate}
 \title{Validate GeoJSON using is-my-json-valid Javascript library}
 \usage{
-geojson_validate(x, verbose = FALSE, error = FALSE, greedy = FALSE)
+geojson_validate(x, inform = FALSE, error = FALSE, greedy = FALSE)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE})
+\item{inform}{(logical) When geojson is invalid, return reason why (\code{TRUE})
 or don't return reason  \code{FALSE}). Default: \code{FALSE}}
 
 \item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then
@@ -21,7 +21,7 @@ error message on error. Default: \code{FALSE}}
 Default: \code{FALSE}}
 }
 \value{
-\code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
+\code{TRUE} or \code{FALSE}. If \code{inform=TRUE} an attribute
 of name \code{errors} is added with error information
 }
 \description{
@@ -38,11 +38,15 @@ this package, so there is that.
 }
 \examples{
 # From a json character string
-geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}') # good
-geojson_validate(x = '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}') # bad
+## good
+geojson_validate('{"type": "Point", "coordinates": [-100, 80]}')
+## bad
+geojson_validate(
+ '{"type": "Rhombus", "coordinates": [[1, 2], [3, 4], [5, 6]]}')
 
 # A file
-file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
+file <- system.file("examples", "zillow_or.geojson",
+  package = "geojsonlint")
 geojson_validate(x = as.location(file))
 
 # A URL
@@ -51,11 +55,11 @@ geojson_validate(as.location(url))
 
 # toggle whether reason for validation failure is given back
 geojson_validate('{ "type": "FeatureCollection" }')
-geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 
 # toggle whether to stop with error message
 geojson_validate('{ "type": "FeatureCollection" }')
-geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 if (interactive()) {
   geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 }

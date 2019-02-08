@@ -16,3 +16,4 @@ myfile.geojson
 ^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
 ^codemeta\.json$
+.github

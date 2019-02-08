@@ -3,13 +3,13 @@
 #' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param verbose (logical) When geojson is invalid, return reason why
+#' @param inform (logical) When geojson is invalid, return reason why
 #' (`TRUE`) or don't return reason (`FALSE`). Default: `FALSE`
 #' @param error (logical) Throw an error on parse failure? If `TRUE`, then
 #' function returns `TRUE` on success, and \code{stop} with the
 #' error message on error. Default: `FALSE`
 #'
-#' @return `TRUE` or `FALSE`. If `verbose=TRUE` an attribute
+#' @return `TRUE` or `FALSE`. If `inform=TRUE` an attribute
 #' of name `errors` is added with error information
 #'
 #' @details Uses the Javascript library
@@ -37,51 +37,51 @@
 #'
 #' # toggle whether reason for validation failure is given back
 #' geojson_hint('{ "type": "FeatureCollection" }')
-#' geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 #'
 #' # toggle whether to stop with error message
 #' geojson_hint('{ "type": "FeatureCollection" }')
-#' geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
+#' geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 #' if (interactive()) {
 #'   geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
-geojson_hint <- function(x, verbose = FALSE, error = FALSE) {
+geojson_hint <- function(x, inform = FALSE, error = FALSE) {
   UseMethod("geojson_hint")
 }
 
 #' @export
-geojson_hint.default <- function(x, verbose = FALSE, error = FALSE) {
+geojson_hint.default <- function(x, inform = FALSE, error = FALSE) {
   stop("no geojson_hint method for ", class(x), call. = FALSE)
 }
 
 #' @export
-geojson_hint.character <- function(x, verbose = FALSE, error = FALSE) {
+geojson_hint.character <- function(x, inform = FALSE, error = FALSE) {
   if ( !jsonlite::validate(x) ) stop("invalid json string", call. = FALSE)
-  lintit(x, verbose, error)
+  lintit(x, inform, error)
 }
 
 #' @export
-geojson_hint.location <- function(x, verbose = FALSE, error = FALSE) {
+geojson_hint.location <- function(x, inform = FALSE, error = FALSE) {
   res <- switch(
     attr(x, "type"),
     file = paste0(readLines(x), collapse = ""),
     url = jsonlite::minify(c_get(x)$parse("UTF-8"))
   )
-  lintit(res, verbose, error)
+  lintit(res, inform, error)
 }
 
 #' @export
-geojson_hint.json <- function(x, verbose = FALSE, error = FALSE) {
-  lintit(x, verbose, error)
+geojson_hint.json <- function(x, inform = FALSE, error = FALSE) {
+  lintit(x, inform, error)
 }
 
 #' @export
-geojson_hint.geojson <- function(x, verbose = FALSE, error = FALSE) {
-  lintit(unclass(x), verbose, error)
+geojson_hint.geojson <- function(x, inform = FALSE, error = FALSE) {
+  lintit(unclass(x), inform, error)
 }
 
 # helpers -----------------------------------
-lintit <- function(x, verbose, error) {
+lintit <- function(x, inform, error) {
   ct$assign("x", jsonlite::minify(x))
   ct$eval("var out = geojsonhint.hint(x);")
   tmp <- as.list(ct$get("out"))
@@ -91,7 +91,7 @@ lintit <- function(x, verbose, error) {
     if (identical(tmp, list())) {
       return(TRUE)
     } else {
-      if (verbose) {
+      if (inform) {
         res <- FALSE
         attr(res, "errors") <- data.frame(rev(tmp), stringsAsFactors = FALSE)
         return(res)

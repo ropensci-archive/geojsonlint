@@ -38,7 +38,7 @@ install.packages("geojsonlint")
 Development version from GitHub
 
 ```{r eval=FALSE}
-devtools::install_github("ropensci/geojsonlint")
+remotes::install_github("ropensci/geojsonlint")
 ```
 
 ```{r}
@@ -92,7 +92,7 @@ geojson_validate('{ "type": "FeatureCollection" }')
 geojsonlint.com web service
 
 ```{r eval = FALSE}
-geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+geojson_lint('{"type": "FooBar"}', inform = TRUE)
 #> [1] FALSE
 #> attr(,"errors")
 #>                                 message status
@@ -102,13 +102,13 @@ geojson_lint('{"type": "FooBar"}', verbose = TRUE)
 geojsonhint JS library
 
 ```{r}
-geojson_hint('{"type": "FooBar"}', verbose = TRUE)
+geojson_hint('{"type": "FooBar"}', inform = TRUE)
 ```
 
 is-my-json-valid JS library
 
 ```{r}
-geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 ```
 
 ## Bad GeoJSON - stop on validation failure

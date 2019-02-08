@@ -10,11 +10,13 @@ test_that("geojson_lint works with character inputs", {
 
   # invalid
   expect_false(geojson_lint('{ "type": "FeatureCollection" }'))
-  expect_false(geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}'))
+  expect_false(
+    geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}'))
 })
 
-test_that("geojson_lint works when quiet output", {
-  a <- geojson_lint('{"type": "FooBar"}', quiet = FALSE)
+test_that("geojson_lint works when inform output", {
+  a <- geojson_lint('{"type": "FooBar"}', inform = TRUE)
+
   expect_false(a)
   expect_is(a, "logical")
   expect_named(attributes(a), "errors")
@@ -22,14 +24,14 @@ test_that("geojson_lint works when quiet output", {
   expect_equal(attr(a, "errors")$message, "\"FooBar\" is not a valid GeoJSON type.")
   
   # valid - returns only a boolean because valid
-  expect_true(geojson_lint('{"type": "Point", "coordinates": [-80,40]}', quiet = FALSE))
+  expect_true(geojson_lint('{"type": "Point", "coordinates": [-80,40]}', inform = TRUE))
   
   # invalid - returns attributes with error reason because not valid
-  bb <- geojson_lint('{ "type": "FeatureCollection" }', quiet = FALSE)
+  bb <- geojson_lint('{ "type": "FeatureCollection" }', inform = TRUE)
   expect_is(bb, "logical")
   expect_is(attributes(bb)[[1]], "data.frame")
   
-  cc <- geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}', quiet = FALSE)
+  cc <- geojson_lint('{"type":"Point","geometry":{"type":"Point","coordinates":[-80,40]},"properties":{}}', inform = TRUE)
   expect_is(cc, "logical")
   expect_is(attributes(cc)[[1]], "data.frame")
 })
@@ -54,13 +56,13 @@ test_that("geojson_lint works with json inputs", {
   x <- jsonlite::minify('{ "type": "FeatureCollection" }')
   expect_is(x, "json")
   
-  # without quiet
+  # without inform
   f <- geojson_lint(x)
   expect_is(f, "logical")
   expect_null(attributes(f))
   
-  # with quiet
-  g <- geojson_lint(x, quiet = FALSE)
+  # with inform
+  g <- geojson_lint(x, inform = TRUE)
   expect_is(g, "logical")
   expect_equal(attr(g, "errors")$message, "A FeatureCollection must have a \"features\" property.")
 })

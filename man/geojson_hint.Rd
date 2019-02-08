@@ -4,13 +4,13 @@
 \alias{geojson_hint}
 \title{Validate GeoJSON using geojsonhint Javascript library}
 \usage{
-geojson_hint(x, verbose = FALSE, error = FALSE)
+geojson_hint(x, inform = FALSE, error = FALSE)
 }
 \arguments{
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{(logical) When geojson is invalid, return reason why
+\item{inform}{(logical) When geojson is invalid, return reason why
 (\code{TRUE}) or don't return reason (\code{FALSE}). Default: \code{FALSE}}
 
 \item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then
@@ -18,7 +18,7 @@ function returns \code{TRUE} on success, and \code{stop} with the
 error message on error. Default: \code{FALSE}}
 }
 \value{
-\code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
+\code{TRUE} or \code{FALSE}. If \code{inform=TRUE} an attribute
 of name \code{errors} is added with error information
 }
 \description{
@@ -50,11 +50,11 @@ geojson_hint(x)
 
 # toggle whether reason for validation failure is given back
 geojson_hint('{ "type": "FeatureCollection" }')
-geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 
 # toggle whether to stop with error message
 geojson_hint('{ "type": "FeatureCollection" }')
-geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 if (interactive()) {
   geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 }

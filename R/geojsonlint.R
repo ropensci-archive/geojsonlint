@@ -4,16 +4,16 @@
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
 #' @param quiet (logical) When geojson is invalid, return reason why
-#' (\code{FALSE}) or don't return reason (\code{TRUE}). Default: \code{TRUE}
-#' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then
-#' function returns \code{TRUE} on success, and \code{stop} with the
-#' error message on error. Default: \code{FALSE}
-#' @param ... curl options passed on to \code{\link[crul]{verb-GET}} or
-#' \code{\link[crul]{verb-POST}}
+#' (`FALSE`) or don't return reason (`TRUE`). Default: `TRUE`
+#' @param error (logical) Throw an error on parse failure? If `TRUE`, then
+#' function returns `TRUE` on success, and \code{stop} with the
+#' error message on error. Default: `FALSE`
+#' @param ... curl options passed on to [crul::verb-GET] or
+#' [crul::verb-POST]
 #'
-#' @details Uses the web service at \url{http://geojsonlint.com}
+#' @details Uses the web service at <http://geojsonlint.com>
 #'
-#' @return \code{TRUE} or \code{FALSE}. If \code{quiet=TRUE} an attribute
+#' @return `TRUE` or `FALSE`. If `quiet=TRUE` an attribute
 #' of name \code{errors} is added with error information
 #'
 #' @examples \dontrun{

@@ -3,27 +3,26 @@
 #' @export
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
-#' @param verbose (logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
-#' return reason (\code{FALSE}). Default: \code{FALSE}
-#' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then
-#' function returns \code{NULL} on success, and \code{stop} with the
-#' error message on error. Default: \code{FALSE}
-#' @param greedy (logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
-#' Default: \code{FALSE}
+#' @param verbose (logical) When geojson is invalid, return reason why (`TRUE`)
+#' or don't return reason  `FALSE`). Default: `FALSE`
+#' @param error (logical) Throw an error on parse failure? If `TRUE`, then
+#' function returns `NULL` on success, and `stop` with the
+#' error message on error. Default: `FALSE`
+#' @param greedy (logical) Continue after the first error? `TRUE` or `FALSE`.
+#' Default: `FALSE`
 #'
-#' @importFrom jsonvalidate json_validator
+#' @details Sometimes you may get a response that your input GeoJSON is
+#' invalid, but get a somewhat unhelpful error message, e.g., 
+#' `no (or more than one) schemas match`. See 
+#' <https://github.com/ropensci/geojsonlint/issues/7#issuecomment-219881961>.
+#' We'll hopefully soon get this sorted out so you'll get a meaningful error
+#' message. However, this method is faster than the other two methods in
+#' this package, so there is that.
 #'
-#' @details Sometimes you may get a response that your input GeoJSON is invalid, but
-#' get a somewhat unhelpful error message, e.g., \code{no (or more than one) schemas match}
-#' See \url{https://github.com/ropensci/geojsonlint/issues/7#issuecomment-219881961}.
-#' We'll hopefully soon get this sorted out so you'll get a meaningful error message.
-#' However, this method is faster than the other two methods in this package, so
-#' there is that.
+#' @return `TRUE` or `FALSE`. If `verbose=TRUE` an attribute
+#' of name `errors` is added with error information
 #'
-#' @return \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
-#' of name \code{errors} is added with error information
-#'
-#' @references \url{https://www.npmjs.com/package/is-my-json-valid}
+#' @references <https://www.npmjs.com/package/is-my-json-valid>
 #'
 #' @examples
 #' # From a json character string

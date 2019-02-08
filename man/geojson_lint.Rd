@@ -17,8 +17,8 @@ url pointing to one of the former}
 function returns \code{TRUE} on success, and \code{stop} with the
 error message on error. Default: \code{FALSE}}
 
-\item{...}{curl options passed on to \code{\link[crul]{verb-GET}} or
-\code{\link[crul]{verb-POST}}}
+\item{...}{curl options passed on to \link[crul:verb-GET]{crul::verb-GET} or
+\link[crul:verb-POST]{crul::verb-POST}}
 }
 \value{
 \code{TRUE} or \code{FALSE}. If \code{quiet=TRUE} an attribute

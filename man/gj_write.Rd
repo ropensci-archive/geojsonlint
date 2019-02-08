@@ -17,7 +17,7 @@ gj_write(x, file, ...)
 Write inputs to a geojson file
 }
 \examples{
-gj_write(x = '{"type": "Point", "coordinates": [-100, 80]}', (file <- tempfile()))
-library("jsonlite")
+gj_write(x = '{"type": "Point", "coordinates": [-100, 80]}',
+  (file <- tempfile()))
 jsonlite::fromJSON(file)
 }

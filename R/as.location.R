@@ -1,24 +1,22 @@
 #' Convert a path or URL to a location object.
 #'
 #' @export
-#'
 #' @param x Input.
 #' @param ... Ignored.
 #' @examples \dontrun{
 #' # A file
-#' file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
+#' file <- system.file("examples", "zillow_or.geojson",
+#'   package = "geojsonlint")
 #' as.location(file)
 #'
 #' # A URL
-#' url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
+#' url <- paset0("https://raw.githubusercontent.com/glynnbird/",
+#'   "usstatesgeojson/master/california.geojson")
 #' as.location(url)
 #' }
-
 as.location <- function(x, ...) UseMethod("as.location")
-
 #' @export
 as.location.character <- function(x, ...) check_location(x, ...)
-
 #' @export
 as.location.location <- function(x, ...) x
 
@@ -26,7 +24,8 @@ check_location <- function(x, ...){
   if (is.url(x)) {
     as_location(x, "url")
   } else {
-    if (!file.exists(x)) stop("File does not exist. Create it, or fix the path.", call. = FALSE)
+    if (!file.exists(x))
+      stop("File does not exist. Create it, or fix the path.", call. = FALSE)
     as_location(path.expand(x), "file")
   }
 }

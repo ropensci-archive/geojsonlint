@@ -17,11 +17,13 @@ Convert a path or URL to a location object.
 \examples{
 \dontrun{
 # A file
-file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
+file <- system.file("examples", "zillow_or.geojson",
+  package = "geojsonlint")
 as.location(file)
 
 # A URL
-url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
+url <- paset0("https://raw.githubusercontent.com/glynnbird/",
+  "usstatesgeojson/master/california.geojson")
 as.location(url)
 }
 }

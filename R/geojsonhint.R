@@ -4,16 +4,16 @@
 #' @param x Input, a geojson character string, json object, or file or
 #' url pointing to one of the former
 #' @param verbose (logical) When geojson is invalid, return reason why
-#' (\code{TRUE}) or don't return reason (\code{FALSE}). Default: \code{FALSE}
-#' @param error (logical) Throw an error on parse failure? If \code{TRUE}, then
-#' function returns \code{TRUE} on success, and \code{stop} with the
-#' error message on error. Default: \code{FALSE}
+#' (`TRUE`) or don't return reason (`FALSE`). Default: `FALSE`
+#' @param error (logical) Throw an error on parse failure? If `TRUE`, then
+#' function returns `TRUE` on success, and \code{stop} with the
+#' error message on error. Default: `FALSE`
 #'
-#' @return \code{TRUE} or \code{FALSE}. If \code{verbose=TRUE} an attribute
-#' of name \code{errors} is added with error information
+#' @return `TRUE` or `FALSE`. If `verbose=TRUE` an attribute
+#' of name `errors` is added with error information
 #'
 #' @details Uses the Javascript library
-#' \url{https://www.npmjs.com/package/geojsonhint} via the \pkg{V8} package
+#' <https://www.npmjs.com/package/geojsonhint> via the \pkg{V8} package
 #'
 #' @examples
 #' geojson_hint('{"type": "FooBar"}')

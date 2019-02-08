@@ -1,12 +1,12 @@
 #' Write inputs to a geojson file
-#' 
+#'
 #' @export
 #' @param x input character, json, or geojson
 #' @param file file path to write to
 #' @param ... Further args
 #' @examples
-#' gj_write(x = '{"type": "Point", "coordinates": [-100, 80]}', (file <- tempfile()))
-#' library("jsonlite")
+#' gj_write(x = '{"type": "Point", "coordinates": [-100, 80]}',
+#'   (file <- tempfile()))
 #' jsonlite::fromJSON(file)
 gj_write <- function(x, file, ...) {
   UseMethod("gj_write")
@@ -33,6 +33,7 @@ gj_write.character <- function(x, file, ...) {
 }
 
 gi_writer <- function(x, file) {
-  cat(jsonlite::toJSON(jsonlite::fromJSON(x), pretty = TRUE, auto_unbox = TRUE), file = file)
+  cat(jsonlite::toJSON(jsonlite::fromJSON(x), pretty = TRUE,
+    auto_unbox = TRUE), file = file)
   return(file)
 }

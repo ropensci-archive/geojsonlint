@@ -2,6 +2,7 @@ geojsonlint
 ===========
 
 
+
 [![cran checks](https://cranchecks.info/badges/worst/geojsonlint)](https://cranchecks.info/pkgs/geojsonlint)
 [![Build Status](https://api.travis-ci.org/ropensci/geojsonlint.png)](https://travis-ci.org/ropensci/geojsonlint)
 [![codecov.io](https://codecov.io/github/ropensci/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropensci/geojsonlint?branch=master)
@@ -26,10 +27,18 @@ extra parameter `greedy` that's not available in the others, and `geojson_hint()
 
 ## Installation
 
+from CRAN
+
 
 ```r
-install.packages("devtools")
-devtools::install_github("ropensci/geojsonlint")
+install.packages("geojsonlint")
+```
+
+Dev version
+
+
+```r
+remotes::install_github("ropensci/geojsonlint")
 ```
 
 
@@ -95,7 +104,7 @@ geojsonlint.com web service
 
 
 ```r
-geojson_lint('{"type": "FooBar"}', verbose = TRUE)
+geojson_lint('{"type": "FooBar"}', inform = TRUE)
 #> [1] FALSE
 #> attr(,"errors")
 #>                                 message status
@@ -106,7 +115,7 @@ geojsonhint JS library
 
 
 ```r
-geojson_hint('{"type": "FooBar"}', verbose = TRUE)
+geojson_hint('{"type": "FooBar"}', inform = TRUE)
 #> [1] FALSE
 #> attr(,"errors")
 #>   line                    message
@@ -117,7 +126,7 @@ is-my-json-valid JS library
 
 
 ```r
-geojson_validate('{ "type": "FeatureCollection" }', verbose = TRUE)
+geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 #> [1] FALSE
 #> attr(,"errors")
 #>   field                             message
@@ -158,6 +167,6 @@ geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 * Please [report any issues or bugs](https://github.com/ropensci/geojsonlint/issues).
 * License: MIT
 * Get citation information for `geojsonlint` in R doing `citation(package = 'geojsonlint')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 [![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

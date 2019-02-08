@@ -13,8 +13,8 @@ url pointing to one of the former}
 \item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE}) or don't
 return reason (\code{FALSE}). Default: \code{FALSE}}
 
-\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
-function returns \code{NULL} on success, and \code{stop} with the 
+\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then
+function returns \code{NULL} on success, and \code{stop} with the
 error message on error. Default: \code{FALSE}}
 
 \item{greedy}{(logical) Continue after the first error? \code{TRUE} or \code{FALSE}.
@@ -28,11 +28,11 @@ of name \code{errors} is added with error information
 Validate GeoJSON using is-my-json-valid Javascript library
 }
 \details{
-Sometimes you may get a response that your input GeoJSON is invalid, but 
+Sometimes you may get a response that your input GeoJSON is invalid, but
 get a somewhat unhelpful error message, e.g., \code{no (or more than one) schemas match}
-See \url{https://github.com/ropensci/geojsonlint/issues/7#issuecomment-219881961}. 
-We'll hopefully soon get this sorted out so you'll get a meaningful error message. 
-However, this method is faster than the other two methods in this package, so 
+See \url{https://github.com/ropensci/geojsonlint/issues/7#issuecomment-219881961}.
+We'll hopefully soon get this sorted out so you'll get a meaningful error message.
+However, this method is faster than the other two methods in this package, so
 there is that.
 }
 \examples{

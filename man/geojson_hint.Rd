@@ -10,11 +10,11 @@ geojson_hint(x, verbose = FALSE, error = FALSE)
 \item{x}{Input, a geojson character string, json object, or file or
 url pointing to one of the former}
 
-\item{verbose}{(logical) When geojson is invalid, return reason why (\code{TRUE}) or don't 
-return reason (\code{FALSE}). Default: \code{FALSE}}
+\item{verbose}{(logical) When geojson is invalid, return reason why
+(\code{TRUE}) or don't return reason (\code{FALSE}). Default: \code{FALSE}}
 
-\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then 
-function returns \code{TRUE} on success, and \code{stop} with the 
+\item{error}{(logical) Throw an error on parse failure? If \code{TRUE}, then
+function returns \code{TRUE} on success, and \code{stop} with the
 error message on error. Default: \code{FALSE}}
 }
 \value{
@@ -25,8 +25,8 @@ of name \code{errors} is added with error information
 Validate GeoJSON using geojsonhint Javascript library
 }
 \details{
-Uses the Javascript library \url{https://www.npmjs.com/package/geojsonhint}
-via the \pkg{V8} package
+Uses the Javascript library
+\url{https://www.npmjs.com/package/geojsonhint} via the \pkg{V8} package
 }
 \examples{
 geojson_hint('{"type": "FooBar"}')

@@ -11,6 +11,7 @@
 #' }
 #' 
 #' @importFrom V8 v8
+#' @importFrom crul upload HttpClient
 #' @name geojsonlint-package
 #' @aliases geojsonlint
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}

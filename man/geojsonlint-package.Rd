@@ -2,8 +2,8 @@
 % Please edit documentation in R/geojsonlint-package.r
 \docType{package}
 \name{geojsonlint-package}
-\alias{geojsonlint}
 \alias{geojsonlint-package}
+\alias{geojsonlint}
 \title{\strong{GeoJSON Linting}}
 \description{
 \strong{GeoJSON Linting}
@@ -19,9 +19,9 @@
  and the Javascript library \code{is-my-json-valid}
 }
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 
 Andy Teucher \email{andy.teucher@gmail.com}
 }
-

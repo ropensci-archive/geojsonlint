@@ -62,4 +62,3 @@ if (interactive()) {
 \references{
 \url{https://www.npmjs.com/package/is-my-json-valid}
 }
-

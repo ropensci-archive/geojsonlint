@@ -10,4 +10,3 @@
 This is the same data set from the ggplot2 library
 }
 \keyword{data}
-

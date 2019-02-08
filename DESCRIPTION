@@ -6,28 +6,33 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     'GeoJSON' schema via the 'Javascript' library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
-Version: 0.2.2.9100
+Version: 0.2.3.9100
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Andy", "Teucher", role = "aut", email = "andy.teucher@gmail.com"),
-    person("Tom", "MacWright", role = "cph", comment = "geojsonhint Javascript library"),
-    person("Mads", "Kristensen", role = "cph", comment = "geojson schema")
+    person("Scott", "Chamberlain", role = c("aut", "cre"),
+        email = "myrmecocystus@gmail.com",
+        comment = c(ORCID="0000-0003-1444-9135")),
+    person("Andy", "Teucher", role = "aut",
+        email = "andy.teucher@gmail.com"),
+    person("Tom", "MacWright", role = "cph",
+        comment = "geojsonhint Javascript library"),
+    person("Mads", "Kristensen", role = "cph",
+        comment = "geojson schema")
     )
 URL: https://github.com/ropensci/geojsonlint
 BugReports: https://github.com/ropensci/geojsonlint/issues
 LazyData: true
 VignetteBuilder: knitr
+Encoding: UTF-8
 Depends:
     R (>= 2.10)
 Imports:
-    httr (>= 1.1.0),
+    crul (>= 0.7.0),
     jsonlite (>= 0.9.19),
     jsonvalidate (>= 1.0.0),
     V8
 Suggests:
     testthat,
     knitr,
-    rmarkdown (>= 0.9.6),
-    covr
-RoxygenNote: 5.0.1
+    rmarkdown (>= 0.9.6)
+RoxygenNote: 6.1.1

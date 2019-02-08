@@ -59,4 +59,3 @@ if (interactive()) {
   geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 }
 }
-

@@ -21,4 +21,3 @@ gj_write(x = '{"type": "Point", "coordinates": [-100, 80]}', (file <- tempfile()
 library("jsonlite")
 jsonlite::fromJSON(file)
 }
-

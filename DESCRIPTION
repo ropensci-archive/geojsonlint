@@ -6,7 +6,7 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     'GeoJSON' schema via the 'Javascript' library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
-Version: 0.2.3.9100
+Version: 0.2.9.9100
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -37,3 +37,6 @@ Suggests:
     knitr,
     rmarkdown (>= 0.9.6)
 RoxygenNote: 6.1.1
+X-schema.org-applicationCategory: Geospatial
+X-schema.org-keywords: geojson, geospatial, lint, hint, data, schema
+X-schema.org-isPartOf: https://ropensci.org

@@ -6,7 +6,7 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     'GeoJSON' schema via the 'Javascript' library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
-Version: 0.3.0
+Version: 0.3.0.9100
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),

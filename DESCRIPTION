@@ -6,7 +6,7 @@ Description: Tools for linting 'GeoJSON'. Includes tools for interacting with th
     'GeoJSON' schema via the 'Javascript' library
     (<https://www.npmjs.com/package/is-my-json-valid>). Some tools work locally
     while others require an internet connection.
-Version: 0.3.0.9100
+Version: 0.3.1.93
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -19,7 +19,8 @@ Authors@R: c(
     person("Mads", "Kristensen", role = "cph",
         comment = "geojson schema")
     )
-URL: https://docs.ropensci.org/geojsonlint, https://github.com/ropensci/geojsonlint
+URL: https://github.com/ropensci/geojsonlint (devel)
+    https://docs.ropensci.org/geojsonlint (docs)
 BugReports: https://github.com/ropensci/geojsonlint/issues
 LazyData: true
 VignetteBuilder: knitr
@@ -36,7 +37,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown (>= 0.9.6)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 X-schema.org-applicationCategory: Geospatial
 X-schema.org-keywords: geojson, geospatial, lint, hint, data, schema
 X-schema.org-isPartOf: https://ropensci.org

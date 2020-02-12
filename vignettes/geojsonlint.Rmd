@@ -1,10 +1,10 @@
 ---
-title: "Introduction to the geojsonlint package"
+title: "Introduction to geojsonlint"
 author: "Scott Chamberlain and Andy Teucher"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to the geojsonlint package}
+  %\VignetteIndexEntry{Introduction to geojsonlint}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

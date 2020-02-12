@@ -3,7 +3,7 @@ man-roxygen/
 .DS_Store
 travis-tool.sh
 vignettes/margins.sty
-Makefile
+^Makefile$
 inst/stuff/
 vignettes/figure/
 ^appveyor\.yml$

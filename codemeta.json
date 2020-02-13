@@ -160,7 +160,7 @@
   "contIntegration": ["https://travis-ci.org/ropensci/geojsonlint", "https://codecov.io/github/ropensci/geojsonlint?branch=master"],
   "releaseNotes": "https://github.com/ropensci/geojsonlint/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/geojsonlint/blob/master/README.md",
-  "fileSize": "881.795KB",
+  "fileSize": "881.796KB",
   "keywords": ["geojson", "geospatial", "lint", "hint", "data", "schema", "linter", "r", "rstats", "r-package"],
   "applicationCategory": "Geospatial",
   "isPartOf": "https://ropensci.org",

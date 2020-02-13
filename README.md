@@ -6,8 +6,8 @@ geojsonlint
 [![cran checks](https://cranchecks.info/badges/worst/geojsonlint)](https://cranchecks.info/pkgs/geojsonlint)
 [![Build Status](https://api.travis-ci.org/ropensci/geojsonlint.png)](https://travis-ci.org/ropensci/geojsonlint)
 [![codecov.io](https://codecov.io/github/ropensci/geojsonlint/coverage.svg?branch=master)](https://codecov.io/github/ropensci/geojsonlint?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/geojsonlint)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/geojsonlint)](https://cran.r-project.org/package=geojsonlint)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/geojsonlint)](https://github.com/metacran/cranlogs.app)
+[![cran version](https://www.r-pkg.org/badges/version/geojsonlint)](https://cran.r-project.org/package=geojsonlint)
 
 GeoJSON linters available in `geojsonlint`
 
@@ -131,6 +131,6 @@ geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 * Get citation information for `geojsonlint` in R doing `citation(package = 'geojsonlint')`
 * Please note that this project is released with a [Contributor Code of Conduct][coc]. By participating in this project you agree to abide by its terms.
 
-[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
 [coc]: https://github.com/ropensci/geojsonlint/blob/master/CODE_OF_CONDUCT.md

@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/geojsonlint",
   "issueTracker": "https://github.com/ropensci/geojsonlint/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 Patched (2018-12-31 r75943)",
+  "runtimePlatform": "R version 3.6.2 Patched (2020-02-04 r77774)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -89,7 +89,6 @@
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
-      "version": ">= 0.9.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -158,11 +157,14 @@
       "sameAs": "https://CRAN.R-project.org/package=V8"
     }
   ],
-  "contIntegration": "https://travis-ci.org/ropensci/geojsonlint",
+  "contIntegration": ["https://travis-ci.org/ropensci/geojsonlint", "https://codecov.io/github/ropensci/geojsonlint?branch=master"],
   "releaseNotes": "https://github.com/ropensci/geojsonlint/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/geojsonlint/blob/master/README.md",
-  "fileSize": "882.679KB",
+  "fileSize": "881.795KB",
   "keywords": ["geojson", "geospatial", "lint", "hint", "data", "schema", "linter", "r", "rstats", "r-package"],
   "applicationCategory": "Geospatial",
-  "isPartOf": "https://ropensci.org"
+  "isPartOf": "https://ropensci.org",
+  "relatedLink": "https://docs.ropensci.org/geojsonlint",
+  "contributor": {},
+  "funder": {}
 }

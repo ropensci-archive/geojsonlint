@@ -1,3 +1,15 @@
+geojsonlint 0.4.0
+=================
+
+### DEFUNCT
+
+* `geojson_lint()` is now defunct; the geojsonlint.com API appears to be gone and there's no sign of it coming back (#20)
+
+## MINOR IMPROVEMENTS
+
+* cran checks identified a failing example - resulting from occassional github bad response - only run these examples if interactive (#19)
+
+
 geojsonlint 0.3.0
 =================
 

@@ -4,13 +4,11 @@
 #'
 #' - [geojson_hint()] - Checks validity of geojson using the Javascript library
 #'  `geojsonhint`
-#' - [geojson_lint()] - Checks validity of geojson using the web service at
-#'  <http://geojsonlint.com>
 #' - [geojson_validate()] - Checks validity of geojson using a GeoJSON schema
 #'  and the Javascript library `is-my-json-valid`
 #'
 #' @importFrom V8 v8
-#' @importFrom crul upload HttpClient
+#' @importFrom crul HttpClient
 #' @importFrom jsonvalidate json_validator
 #' @name geojsonlint-package
 #' @aliases geojsonlint

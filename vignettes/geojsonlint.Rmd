@@ -20,9 +20,8 @@ knitr::opts_chunk$set(
 
 Tools for linting 'GeoJSON'.
 
-Package API:
+GeoJSON linters available in `geojsonlint`
 
-* `geojson_lint()` - [GeoJSON lint web service](http://geojsonlint.com/)
 * `geojson_hint()` - [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint)
 * `geojson_validate()` - [is-my-json-valid JS library](https://www.npmjs.com/package/is-my-json-valid) using a GeoJSON
 schema from [https://github.com/SchemaStore/schemastore](https://github.com/SchemaStore/schemastore)
@@ -47,13 +46,6 @@ library("geojsonlint")
 
 ## Good GeoJSON
 
-geojsonlint.com web service
-
-```{r eval = FALSE}
-geojson_lint(x = '{"type": "Point", "coordinates": [-100, 80]}')
-#> [1] TRUE
-```
-
 geojsonhint JS library
 
 ```{r}
@@ -67,13 +59,6 @@ geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}')
 ```
 
 ## Bad GeoJSON
-
-geojsonlint.com web service
-
-```{r eval = FALSE}
-geojson_lint('{"type": "FooBar"}')
-#> [1] FALSE
-```
 
 geojsonhint JS library
 
@@ -89,16 +74,6 @@ geojson_validate('{ "type": "FeatureCollection" }')
 
 ## Bad GeoJSON - with reason for failure
 
-geojsonlint.com web service
-
-```{r eval = FALSE}
-geojson_lint('{"type": "FooBar"}', inform = TRUE)
-#> [1] FALSE
-#> attr(,"errors")
-#>                                 message status
-#> 1 "FooBar" is not a valid GeoJSON type.  error
-```
-
 geojsonhint JS library
 
 ```{r}
@@ -112,14 +87,6 @@ geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 ```
 
 ## Bad GeoJSON - stop on validation failure
-
-geojsonlint.com web service
-
-```{r eval=FALSE}
-geojson_lint('{"type": "FooBar"}', error = TRUE)
-#> Error: invalid GeoJSON 
-#>    - "FooBar" is not a valid GeoJSON type.
-```
 
 geojsonhint JS library
 

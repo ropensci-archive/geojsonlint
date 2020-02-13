@@ -13,10 +13,3 @@ c_get <- function(url, args = list(), ...) {
   res$raise_for_status()
   res
 }
-
-c_post <- function(url, body = list(), ...) {
-  conn <- crul::HttpClient$new(url, opts = list(...))
-  res <- conn$post(body = body)
-  res$raise_for_status()
-  res
-}

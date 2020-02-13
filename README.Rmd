@@ -18,19 +18,17 @@ knitr::opts_chunk$set(
 
 GeoJSON linters available in `geojsonlint`
 
-* [GeoJSON lint web service](http://geojsonlint.com/) - via `geojson_lint()`
 * [GeoJSON hint JS library](https://www.npmjs.com/package/geojsonhint) - via `geojson_hint()` - currently using `geojsonhint` `v1.2.1`
 * [is-my-json-valid JS library](https://www.npmjs.com/package/is-my-json-valid) - via `geojson_validate()`
 
-All three functions return the same outputs. If the GeoJSON is valid, they return `TRUE`.
+Both functions return the same outputs. If the GeoJSON is valid, they return `TRUE`.
 If the GeoJSON is invalid, they return `FALSE`, plus reason(s) that the GeoJSON is invalid
 in an attribute named _errors_ as a data.frame. The fields in the data.frame's are not
 the same across functions unfortunately, but they can be easily coerced to combine via
 e.g., `plyr::rbind.fill` or `dplyr::bind_rows` or `data.table::rbindlist(fill = TRUE)`
 
 The parameters for the three functions are similar, though `geojson_validate()` has an
-extra parameter `greedy` that's not available in the others, and `geojson_hint()` has
-`...` parameter to pass on curl options as it works with a web service.
+extra parameter `greedy` that's not available in the others.
 
 ## Installation
 
@@ -52,12 +50,6 @@ library("geojsonlint")
 
 ## Good GeoJSON
 
-geojsonlint.com web service
-
-```{r}
-geojson_lint(x = '{"type": "Point", "coordinates": [-100, 80]}')
-```
-
 geojsonhint JS library
 
 ```{r}
@@ -71,12 +63,6 @@ geojson_validate(x = '{"type": "Point", "coordinates": [-100, 80]}')
 ```
 
 ## Bad GeoJSON
-
-geojsonlint.com web service
-
-```{r}
-geojson_lint('{"type": "FooBar"}')
-```
 
 geojsonhint JS library
 
@@ -92,12 +78,6 @@ geojson_validate('{ "type": "FeatureCollection" }')
 
 ## Bad GeoJSON - with reason for failure
 
-geojsonlint.com web service
-
-```{r}
-geojson_lint('{"type": "FooBar"}', inform = TRUE)
-```
-
 geojsonhint JS library
 
 ```{r}
@@ -111,14 +91,6 @@ geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 ```
 
 ## Bad GeoJSON - stop on validation failure
-
-geojsonlint.com web service
-
-```{r eval=FALSE}
-geojson_lint('{"type": "FooBar"}', error = TRUE)
-#> Error: invalid GeoJSON
-#>    - "FooBar" is not a valid GeoJSON type.
-```
 
 geojsonhint JS library
 
@@ -141,6 +113,8 @@ geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 * Please [report any issues or bugs](https://github.com/ropensci/geojsonlint/issues).
 * License: MIT
 * Get citation information for `geojsonlint` in R doing `citation(package = 'geojsonlint')`
-* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct][coc]. By participating in this project you agree to abide by its terms.
 
 [![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+
+[coc]: https://github.com/ropensci/geojsonlint/blob/master/CODE_OF_CONDUCT.md

@@ -38,8 +38,10 @@
 #' geojson_validate(x = as.location(file))
 #'
 #' # A URL
+#' if (interactive()) {
 #' url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
 #' geojson_validate(as.location(url))
+#' }
 #'
 #' # toggle whether reason for validation failure is given back
 #' geojson_validate('{ "type": "FeatureCollection" }')
@@ -49,7 +51,7 @@
 #' geojson_validate('{ "type": "FeatureCollection" }')
 #' geojson_validate('{ "type": "FeatureCollection" }', inform = TRUE)
 #' if (interactive()) {
-#'   geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
+#' geojson_validate('{ "type": "FeatureCollection" }', error = TRUE)
 #' }
 geojson_validate <- function(x, inform = FALSE, error = FALSE,
   greedy = FALSE) {

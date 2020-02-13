@@ -40,8 +40,10 @@ file <- system.file("examples", "zillow_or.geojson", package = "geojsonlint")
 geojson_hint(as.location(file))
 
 # A URL
+if (interactive()) {
 url <- "https://raw.githubusercontent.com/glynnbird/usstatesgeojson/master/california.geojson"
 geojson_hint(as.location(url))
+}
 
 # from json (jsonlite class)
 x <- jsonlite::minify('{ "type": "FeatureCollection" }')
@@ -56,6 +58,6 @@ geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 geojson_hint('{ "type": "FeatureCollection" }')
 geojson_hint('{ "type": "FeatureCollection" }', inform = TRUE)
 if (interactive()) {
-  geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
+geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 }
 }

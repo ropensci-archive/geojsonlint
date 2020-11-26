@@ -4,7 +4,7 @@
 \name{geojsonlint-package}
 \alias{geojsonlint-package}
 \alias{geojsonlint}
-\title{\strong{GeoJSON Linting}}
+\title{geojsonlint}
 \description{
 \strong{GeoJSON Linting}
 }
@@ -19,7 +19,7 @@ and the Javascript library \code{is-my-json-valid}
 }
 
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
 
 Andy Teucher \email{andy.teucher@gmail.com}
 }

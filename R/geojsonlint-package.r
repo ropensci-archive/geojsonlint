@@ -1,5 +1,5 @@
-#' **GeoJSON Linting**
-#'
+#' @title geojsonlint
+#' @description **GeoJSON Linting**
 #' @section Package API:
 #'
 #' - [geojson_hint()] - Checks validity of geojson using the Javascript library

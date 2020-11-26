@@ -12,7 +12,7 @@
 #' @importFrom jsonvalidate json_validator
 #' @name geojsonlint-package
 #' @aliases geojsonlint
-#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Scott Chamberlain
 #' @author Andy Teucher \email{andy.teucher@@gmail.com}
 #' @docType package
 NULL

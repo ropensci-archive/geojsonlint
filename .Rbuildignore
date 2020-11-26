@@ -18,3 +18,4 @@ myfile.geojson
 ^codemeta\.json$
 .github
 revdep
+^LICENSE\.md$
